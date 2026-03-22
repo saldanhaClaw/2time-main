@@ -5,6 +5,17 @@ import { neon } from '@neondatabase/serverless';
 const DATABASE_URL = 'postgresql://neondb_owner:npg_6CuNlkeVUrD9@ep-cool-morning-ac6lqq9i-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require';
 const sql = neon(DATABASE_URL);
 
+// Helper: run a query and return rows array
+async function runQuery(query: string, params: any[] = []): Promise<any[]> {
+  if (params.length === 0) {
+    const result = await sql`${query}`;
+    return Array.isArray(result) ? result : [];
+  }
+  // Use query() for parameterized queries — returns { rows }
+  const result: any = await (sql as any).query(query, params);
+  return result?.rows ?? result ?? [];
+}
+
 // --- Admin credentials ---
 const ADMIN_EMAIL = 'admin@2timeweb.com';
 const ADMIN_PASSWORD = '2Time@Adm2026';
@@ -147,7 +158,7 @@ class QueryBuilder {
         case 'select': {
           const orderStr = this.orderCol ? ` ORDER BY "${this.orderCol}" ${this.orderAsc ? 'ASC' : 'DESC'}` : '';
           const query = `SELECT ${this.selectCols} FROM "${this.table}"${this.buildWhere()}${orderStr}`;
-          rows = await sql(query, this.filterValues);
+          rows = await runQuery(query, this.filterValues);
           if (this.isSingle) return { data: rows[0] || null, error: null };
           return { data: rows, error: null };
         }
@@ -160,7 +171,7 @@ class QueryBuilder {
             const placeholders = keys.map((_, i) => `$${i + 1}`).join(', ');
             const vals = keys.map(k => k === 'value' && typeof item[k] === 'object' ? JSON.stringify(item[k]) : item[k]);
             const q = `INSERT INTO "${this.table}" (${cols}) VALUES (${placeholders}) RETURNING *`;
-            const r = await sql(q, vals);
+            const r = await runQuery(q, vals);
             allRows.push(...r);
           }
           if (this.isSingle) return { data: allRows[0] || null, error: null };
@@ -180,7 +191,7 @@ class QueryBuilder {
           const allVals = [...vals, ...this.filterValues];
           const whereClause = whereStr ? ` WHERE ${whereStr}` : '';
           const q = `UPDATE "${this.table}" SET ${setClauses}${whereClause} RETURNING *`;
-          rows = await sql(q, allVals);
+          rows = await runQuery(q, allVals);
           if (this.isSingle) return { data: rows[0] || null, error: null };
           return { data: rows, error: null };
         }
@@ -194,7 +205,7 @@ class QueryBuilder {
             const updateSet = keys.filter(k => k !== 'id').map((k, i) => `"${k}" = EXCLUDED."${k}"`).join(', ');
             const vals = keys.map(k => k === 'value' && typeof item[k] === 'object' ? JSON.stringify(item[k]) : item[k]);
             const q = `INSERT INTO "${this.table}" (${cols}) VALUES (${placeholders}) ON CONFLICT (id) DO UPDATE SET ${updateSet} RETURNING *`;
-            const r = await sql(q, vals);
+            const r = await runQuery(q, vals);
             allRows.push(...r);
           }
           return { data: allRows, error: null };
@@ -202,7 +213,7 @@ class QueryBuilder {
 
         case 'delete': {
           const q = `DELETE FROM "${this.table}"${this.buildWhere()} RETURNING *`;
-          rows = await sql(q, this.filterValues);
+          rows = await runQuery(q, this.filterValues);
           return { data: rows, error: null };
         }
 
