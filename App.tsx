@@ -57,18 +57,18 @@ import { Portfolio3DCarousel } from "./components/ui/portfolio-3d-carousel";
 const TESTIMONIALS = [
   {
     id: 1,
-    testimonial: "A 2TimeWeb transformou nosso processo de vendas. O SDR automático é como ter um funcionário nota 10 disponível 24h por dia.",
+    testimonial: "2TimeWeb transformed our sales process. The AI SDR is like having a top-tier employee available 24/7.",
     author: "Ricardo S. - CEO @ AutoTech"
   },
   {
     id: 2,
-    testimonial: "O sistema de SEO integrado gerou mais leads orgânicos em 3 meses do que toda nossa estratégia paga do ano passado.",
-    author: "Maria V. - Diretora de Growth @ LogiFlow"
+    testimonial: "The integrated SEO system generated more organic leads in 3 months than our entire paid strategy from last year.",
+    author: "Maria V. - Head of Growth @ LogiFlow"
   },
   {
     id: 3,
-    testimonial: "Escalabilidade real. Conseguimos dobrar nossa operação sem contratar mais ninguém pro administrativo graças às automações.",
-    author: "Carlos R. - Fundador @ BuildFast"
+    testimonial: "Real scalability. We doubled our operation without hiring anyone extra for admin, thanks to the automations.",
+    author: "Carlos R. - Founder @ BuildFast"
   }
 ];
 
@@ -102,15 +102,15 @@ const INITIAL_CONFIG: SiteConfig = {
   logo: '2T',
   logoUrl: '',
   faviconUrl: '',
-  email: 'contato@2timeweb.com.br',
+  email: 'contact@2timeweb.com',
   phone: '+55 12 99714-6957',
-  address: 'São Paulo - SP / Global',
+  address: 'São Paulo, Brazil / Global',
   blogFrequency: 2,
   maintenanceMode: false,
-  maintenanceTitle: 'Estamos em Obras Digitais',
-  maintenanceMessage: 'Estamos construindo algo incrível para transformar seu negócio. Voltamos em breve!',
+  maintenanceTitle: 'Under Digital Construction',
+  maintenanceMessage: 'We are building something incredible to transform your business. Back soon!',
   robotsTxt: 'User-agent: *\nDisallow: /admin\nAllow: /',
-  sitemapUrl: 'https://2timeweb.com.br/sitemap.xml',
+  sitemapUrl: 'https://2timeweb.com/sitemap.xml',
   preferredAiModel: 'gemini'
 };
 
@@ -122,10 +122,10 @@ const SDRAssistant = ({ onLeadCapture, phone }: { onLeadCapture: (l: any) => voi
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const steps = [
-    { label: "Olá! Sou o assistente da 2TimeWeb. Qual seu nome?", key: 'name', type: 'text' },
-    { label: "Prazer! Qual seu melhor e-mail?", key: 'email', type: 'email' },
-    { label: "E seu WhatsApp para o orçamento?", key: 'phone', type: 'tel' },
-    { label: "O que você busca? (Sistemas, Automação, SEO)", key: 'interest', type: 'select', options: ['Sistemas', 'Automação', 'SEO'] }
+    { label: "Hi! I'm the 2TimeWeb assistant. What's your name?", key: 'name', type: 'text' },
+    { label: "Nice to meet you! What's your best email?", key: 'email', type: 'email' },
+    { label: "And your phone number for the quote?", key: 'phone', type: 'tel' },
+    { label: "What are you looking for? (Systems, Automation, SEO)", key: 'interest', type: 'select', options: ['Systems', 'Automation', 'SEO'] }
   ];
 
   const handleNext = async () => {
@@ -151,7 +151,7 @@ const SDRAssistant = ({ onLeadCapture, phone }: { onLeadCapture: (l: any) => voi
           >
             <div className="p-6 bg-blue-600 flex justify-between items-center text-white">
               <div className="flex items-center gap-2 font-bold">
-                <Bot size={20} /> SDR Inteligente
+                <Bot size={20} /> AI SDR Assistant
               </div>
               <button onClick={() => setIsOpen(false)}><X size={18} /></button>
             </div>
@@ -182,7 +182,7 @@ const SDRAssistant = ({ onLeadCapture, phone }: { onLeadCapture: (l: any) => voi
                     onClick={handleNext}
                     className="w-full py-3 bg-blue-600 text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-blue-500 transition-all shadow-lg shadow-blue-600/20"
                   >
-                    Próximo <ArrowRight size={16} />
+                    Next <ArrowRight size={16} />
                   </button>
                 </>
               ) : (
@@ -190,13 +190,13 @@ const SDRAssistant = ({ onLeadCapture, phone }: { onLeadCapture: (l: any) => voi
                   <div className="w-12 h-12 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mx-auto">
                     <CheckCircle2 size={32} />
                   </div>
-                  <h4 className="font-bold">Solicitação Recebida!</h4>
-                  <p className="text-xs text-gray-400">Um especialista entrará em contato em breve.</p>
+                  <h4 className="font-bold">Request Received!</h4>
+                  <p className="text-xs text-gray-400">A specialist will contact you shortly.</p>
                   <a
                     href={`https://wa.me/${phone.replace(/\D/g, '')}?text=Olá,%20acabei%20de%20solicitar%20um%20orçamento%20pelo%20site.`}
                     className="block py-3 bg-green-600 text-white rounded-xl font-bold text-sm"
                   >
-                    Falar Agora no WhatsApp
+                    Chat Now on WhatsApp
                   </a>
                 </div>
               )}
@@ -231,10 +231,10 @@ const MaintenancePage = ({ config, onOpenDashboard }: { config: SiteConfig, onOp
       </p>
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
         <a href={`https://wa.me/${config.phone.replace(/\D/g, '')}`} className="px-8 py-4 bg-blue-600 rounded-full font-bold shadow-xl shadow-blue-900/40">
-          Falar no WhatsApp
+          Chat on WhatsApp
         </a>
         <button onClick={onOpenDashboard} className="px-8 py-4 glass rounded-full font-bold text-gray-500 hover:text-white transition-colors">
-          Acesso Admin
+          Admin Access
         </button>
       </div>
     </div>
@@ -267,14 +267,14 @@ const Navbar = ({ onOpenDashboard, config, setView, setSelectedService }: { onOp
         </div>
 
         <div className="hidden md:flex items-center gap-8">
-          <a href="#servicos" onClick={() => setView('site')} className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Serviços</a>
+          <a href="#servicos" onClick={() => setView('site')} className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Services</a>
           <button onClick={() => setView('lancamentos')} className="text-sm font-medium text-purple-400 hover:text-white transition-colors flex items-center gap-1">
-            <Rocket size={14} /> Lançamentos
+            <Rocket size={14} /> Launchs
           </button>
 
           <div className="group relative py-4">
             <button className="text-sm font-medium text-gray-400 group-hover:text-white transition-colors flex items-center gap-1">
-              Tecnologia <ChevronRight size={14} className="rotate-90 group-hover:rotate-[270deg] transition-transform" />
+              Technology <ChevronRight size={14} className="rotate-90 group-hover:rotate-[270deg] transition-transform" />
             </button>
             <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300">
               <div className="glass w-[600px] p-6 rounded-[2rem] border-white/10 shadow-2xl grid grid-cols-2 gap-2">
@@ -297,7 +297,7 @@ const Navbar = ({ onOpenDashboard, config, setView, setSelectedService }: { onOp
             </div>
           </div>
 
-          <button onClick={() => setView('portfolio')} className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Portfólio</button>
+          <button onClick={() => setView('portfolio')} className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Portfolio</button>
           <button onClick={() => setView('blog')} className="text-sm font-medium text-gray-400 hover:text-white transition-colors flex items-center gap-1">
             <Newspaper size={14} /> Blog
           </button>
@@ -305,7 +305,7 @@ const Navbar = ({ onOpenDashboard, config, setView, setSelectedService }: { onOp
             <LayoutDashboard className="w-5 h-5" />
           </button>
           <a href="#contato" className="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-full text-sm font-semibold transition-all shadow-lg shadow-blue-600/20">
-            Solicitar Orçamento
+            Get a Quote
           </a>
         </div>
 
@@ -316,11 +316,11 @@ const Navbar = ({ onOpenDashboard, config, setView, setSelectedService }: { onOp
 
       {mobileMenuOpen && (
         <div className="md:hidden bg-gray-950 border-b border-white/5 px-6 py-8 flex flex-col gap-6 animate-in slide-in-from-top max-h-[80vh] overflow-y-auto">
-          <a href="#servicos" onClick={() => { setView('site'); setMobileMenuOpen(false); }} className="text-lg font-medium">Serviços</a>
-          <button onClick={() => { setView('lancamentos'); setMobileMenuOpen(false); }} className="text-lg font-medium text-left">Lançamentos</button>
+          <a href="#servicos" onClick={() => { setView('site'); setMobileMenuOpen(false); }} className="text-lg font-medium">Services</a>
+          <button onClick={() => { setView('lancamentos'); setMobileMenuOpen(false); }} className="text-lg font-medium text-left">Launchs</button>
 
           <div className="space-y-4">
-            <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest pl-2">Tecnologia & Serviços</p>
+            <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest pl-2">Technology & Services</p>
             <div className="grid grid-cols-1 gap-2">
               {Object.values(SERVICES_DATA).map(s => (
                 <button
@@ -335,12 +335,12 @@ const Navbar = ({ onOpenDashboard, config, setView, setSelectedService }: { onOp
             </div>
           </div>
 
-          <button onClick={() => { setView('portfolio'); setMobileMenuOpen(false); }} className="text-lg font-medium text-left">Portfólio</button>
+          <button onClick={() => { setView('portfolio'); setMobileMenuOpen(false); }} className="text-lg font-medium text-left">Portfolio</button>
           <button onClick={() => { setView('blog'); setMobileMenuOpen(false); }} className="text-lg font-medium text-left">Blog</button>
           <button onClick={() => { onOpenDashboard(); setMobileMenuOpen(false); }} className="text-lg font-medium text-left flex items-center gap-2">
-            <LayoutDashboard className="w-5 h-5" /> Painel Admin
+            <LayoutDashboard className="w-5 h-5" /> Admin Panel
           </button>
-          <a href="#contato" onClick={() => setMobileMenuOpen(false)} className="py-3 bg-blue-600 text-center rounded-lg font-bold">Quero meu Sistema</a>
+          <a href="#contato" onClick={() => setMobileMenuOpen(false)} className="py-3 bg-blue-600 text-center rounded-lg font-bold">Get My System</a>
         </div>
       )}
     </nav>
@@ -495,20 +495,20 @@ export default function App() {
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
                 className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-widest mb-6 mx-auto lg:mx-0"
               >
-                <Sparkles size={12} className="animate-pulse" /> 2TimeWeb: Tecnologia Sob Medida
+                <Sparkles size={12} className="animate-pulse" /> 2TimeWeb: Technology Sob Medida
               </motion.div>
               <h1 className="text-4xl md:text-7xl font-black mb-8 leading-[1.1] tracking-tight text-white">
-                Sistemas que Convertem,<br /> IA que <span className="gradient-text italic">Escala.</span>
+                Systems that Convert,<br /> AI that <span className="gradient-text italic">Scales.</span>
               </h1>
               <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
-                Sua empresa no piloto automático com ecossistemas digitais de alta performance, SEO estratégico e automações inteligentes.
+                Your business on autopilot with high-performance digital ecosystems, strategic SEO and intelligent automation.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <a href="#contato" className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl font-bold flex items-center justify-center gap-2 group transition-all shadow-xl shadow-blue-600/20">
-                  Começar Projeto Agora <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+                  Start Your Project Now <ArrowRight className="group-hover:translate-x-1 transition-transform" />
                 </a>
                 <a href="#tecnologia" className="px-8 py-4 glass rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-white/10 transition-all">
-                  Ver Nossa Tech
+                  See Our Tech
                 </a>
               </div>
             </div>
@@ -530,21 +530,21 @@ export default function App() {
             </div>
             <div className="order-1 md:order-2 space-y-8">
               <h2 className="text-3xl md:text-5xl font-black leading-tight text-white">
-                Infraestrutura Robusta para <br /><span className="text-blue-500">Escala Infinita.</span>
+                Robust Infrastructure for <br /><span className="text-blue-500">Infinite Scale.</span>
               </h2>
               <p className="text-gray-400 text-lg leading-relaxed">
-                Não criamos apenas sites. Construímos motores de dados integrados via REST API, conectando seu CRM, Blog e Marketing em uma única engrenagem de crescimento.
+                We don't just build websites. We craft data engines integrated via REST API, connecting your CRM, Blog and Marketing into a single growth machine.
               </p>
               <div className="grid grid-cols-2 gap-6">
                 <div className="p-6 glass rounded-[2rem] border-white/5">
                   <Cpu className="text-blue-500 mb-4" />
-                  <h4 className="font-bold mb-2 text-sm">IA Integrada</h4>
-                  <p className="text-xs text-gray-500">Decisões baseadas em dados e geração de conteúdo SEO.</p>
+                  <h4 className="font-bold mb-2 text-sm">Integrated AI</h4>
+                  <p className="text-xs text-gray-500">Data-driven decisions and SEO content generation.</p>
                 </div>
                 <div className="p-6 glass rounded-[2rem] border-white/5">
                   <Workflow className="text-purple-500 mb-4" />
                   <h4 className="font-bold mb-2 text-sm">Workflows</h4>
-                  <p className="text-xs text-gray-500">Elimine tarefas repetitivas e foque no fechamento.</p>
+                  <p className="text-xs text-gray-500">Eliminate repetitive tasks and focus on closing deals.</p>
                 </div>
               </div>
             </div>
@@ -556,13 +556,13 @@ export default function App() {
           <div className="container mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
             <div className="space-y-8">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-widest">
-                Parcerias de Sucesso
+                Success Partnerships
               </div>
               <h2 className="text-3xl md:text-5xl font-black leading-tight text-white">
-                O que dizem quem já <br /><span className="gradient-text italic">escalou conosco.</span>
+                What our clients say <br /><span className="gradient-text italic">after scaling with us.</span>
               </h2>
               <p className="text-gray-400 text-lg leading-relaxed max-w-md">
-                Empresas que transformaram seu administrativo em uma máquina de lucro automática através de nossos ecossistemas.
+                Companies that turned their operations into an automated profit machine through our ecosystems.
               </p>
               <div className="flex items-center gap-6 pt-4">
                 <div className="flex -space-x-4">
@@ -572,8 +572,8 @@ export default function App() {
                   <div className="w-12 h-12 rounded-full border-4 border-gray-950 bg-blue-600 flex items-center justify-center text-[10px] font-bold text-white tracking-tighter">+150</div>
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-white">Mais de 150 parcerias</p>
-                  <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Nível Global</p>
+                  <p className="text-sm font-bold text-white">Over 150 partnerships</p>
+                  <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Global Level</p>
                 </div>
               </div>
             </div>
@@ -592,19 +592,19 @@ export default function App() {
               <div className="grid md:grid-cols-2 gap-12 items-center p-8 md:p-16">
                 <div className="space-y-8">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-[10px] font-black uppercase tracking-widest">
-                    Vertical Especialista
+                    Specialist Vertical
                   </div>
                   <h2 className="text-4xl md:text-5xl font-black text-white leading-tight">
-                    Somos o Braço de <span className="text-purple-400">Lançamento</span> para Influenciadores.
+                    We Are the <span className="text-purple-400">Launch</span> Arm for Influencers.
                   </h2>
                   <p className="text-gray-400 text-lg leading-relaxed">
-                    Transformamos sua audiência em um negócio estruturado. Lançamos cursos digitais e mentorias, além de estruturar toda a tecnologia para seus eventos presenciais.
+                    We turn your audience into a structured business. We launch digital courses, mentorships, and build all the tech for your live events.
                   </p>
                   <button
                     onClick={() => setView('lancamentos')}
                     className="px-8 py-4 bg-purple-600 hover:bg-purple-500 text-white rounded-2xl font-bold flex items-center gap-2 transition-all shadow-xl shadow-purple-900/40 group"
                   >
-                    Conhecer Modelo de Lançamento <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                    Explore Launch Model <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>
                 <div className="relative">
@@ -619,8 +619,8 @@ export default function App() {
                     ></iframe>
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent pointer-events-none"></div>
                     <div className="absolute bottom-6 left-6 right-6 p-4 glass rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
-                      <p className="text-xs font-bold text-white uppercase tracking-widest mb-1">Impacto & Escala</p>
-                      <p className="text-[10px] text-gray-500">Tecnologia proprietária para funis de alta conversão.</p>
+                      <p className="text-xs font-bold text-white uppercase tracking-widest mb-1">Impact & Scale</p>
+                      <p className="text-[10px] text-gray-500">Proprietary technology for high-conversion funnels.</p>
                     </div>
                   </div>
                 </div>
@@ -651,19 +651,19 @@ export default function App() {
               <div className="w-full md:w-2/3 space-y-6 text-center md:text-left relative z-10">
                 <div>
                   <h3 className="text-3xl md:text-4xl font-black text-white mb-2">Gabriel Moraes</h3>
-                  <p className="text-blue-500 font-bold uppercase tracking-widest text-xs">Sócio & Engenharia de Sistemas</p>
+                  <p className="text-blue-500 font-bold uppercase tracking-widest text-xs">Partner & Systems Engineering</p>
                 </div>
                 
                 <p className="text-gray-400 text-lg leading-relaxed">
-                  Técnico de desenvolvimento focado na arquitetura de soluções robustas. Cursando Engenharia de Sistemas, Gabriel lidera a inovação tecnológica da 2TimeWeb, garantindo que cada linha de código contribua para a escalabilidade do seu negócio.
+                  Development engineer focused on building robust solutions. Studying Systems Engineering, Gabriel leads 2TimeWeb's technological innovation, ensuring every line of code contributes to your business's scalability.
                 </p>
 
                 <div className="flex flex-wrap gap-3 justify-center md:justify-start">
                    <div className="px-4 py-2 glass rounded-xl text-xs font-bold text-gray-300 flex items-center gap-2">
-                      <Cpu size={14} className="text-blue-500" /> Alta Performance
+                      <Cpu size={14} className="text-blue-500" /> High Performance
                    </div>
                    <div className="px-4 py-2 glass rounded-xl text-xs font-bold text-gray-300 flex items-center gap-2">
-                      <Workflow size={14} className="text-purple-500" /> Automação
+                      <Workflow size={14} className="text-purple-500" /> Automation
                    </div>
                 </div>
               </div>
@@ -674,7 +674,7 @@ export default function App() {
         {/* SERVICES */}
         <section id="servicos" className="py-24">
           <div className="container mx-auto px-6">
-            <h2 className="text-4xl md:text-5xl font-black text-center mb-20 italic bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-600">Nosso Arsenal de Soluções</h2>
+            <h2 className="text-4xl md:text-5xl font-black text-center mb-20 italic bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-600">Our Solutions Arsenal</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {SERVICES.map((service) => (
                 <div key={service.id} className="glass p-8 rounded-[2.5rem] group hover:bg-blue-600/5 transition-all border-white/5 hover:border-blue-500/20">
@@ -702,8 +702,8 @@ export default function App() {
             <Card className="max-w-5xl mx-auto p-8 md:p-16 border-white/10 shadow-3xl bg-gray-900/80">
               <div className="grid md:grid-cols-2 gap-16">
                 <div>
-                  <h2 className="text-4xl font-black mb-8 leading-tight">Vamos construir seu <span className="text-blue-500">próximo nível?</span></h2>
-                  <p className="text-gray-400 mb-8 leading-relaxed">Deixe seus dados e receba um diagnóstico tecnológico gratuito da sua empresa.</p>
+                  <h2 className="text-4xl font-black mb-8 leading-tight">Ready to build your <span className="text-blue-500">next level?</span></h2>
+                  <p className="text-gray-400 mb-8 leading-relaxed">Leave your details and receive a free technology audit for your business.</p>
                   <div className="space-y-6">
                     <div className="flex items-center gap-4 text-sm font-bold text-gray-300">
                       <div className="w-8 h-8 rounded-full bg-blue-600/20 flex items-center justify-center text-blue-500"><Send size={16} />Reforçam o CRM</div>
@@ -723,20 +723,20 @@ export default function App() {
                     interest: target.interest.value
                   });
                   target.reset();
-                  alert('Seu diagnóstico foi solicitado!');
+                  alert('Your audit has been requested!');
                 }} className="space-y-4">
-                  <input required name="name" type="text" placeholder="Nome completo" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-blue-500 outline-none transition-all" />
+                  <input required name="name" type="text" placeholder="Full name" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-blue-500 outline-none transition-all" />
                   <div className="grid grid-cols-2 gap-4">
-                    <input required name="email" type="email" placeholder="E-mail" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-blue-500 outline-none transition-all" />
+                    <input required name="email" type="email" placeholder="Email" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-blue-500 outline-none transition-all" />
                     <input required name="phone" type="tel" placeholder="WhatsApp" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-blue-500 outline-none transition-all" />
                   </div>
                   <select name="interest" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-blue-500 outline-none transition-all">
-                    <option value="Sistemas">Sistemas Sob Medida</option>
-                    <option value="Automacao">IA & Automação</option>
-                    <option value="SEO">SEO & Tráfego</option>
+                    <option value="Sistemas">Custom Systems</option>
+                    <option value="Automacao">AI & Automation</option>
+                    <option value="SEO">SEO & Traffic</option>
                   </select>
                   <button type="submit" className="w-full py-5 bg-white text-gray-950 rounded-2xl font-black text-lg hover:bg-gray-200 transition-all flex items-center justify-center gap-2">
-                    Solicitar Diagnóstico Agora <ArrowRight size={20} />
+                    Request Free Audit Now <ArrowRight size={20} />
                   </button>
                 </form>
               </div>
@@ -750,15 +750,15 @@ export default function App() {
             <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
               <div className="space-y-4">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-black uppercase tracking-widest">
-                  Fique por Dentro
+                  Stay Updated
                 </div>
-                <h2 className="text-4xl md:text-5xl font-black text-white">Insights & <span className="text-blue-500 italic">Tendências.</span></h2>
+                <h2 className="text-4xl md:text-5xl font-black text-white">Insights & <span className="text-blue-500 italic">Trends.</span></h2>
               </div>
               <button
                 onClick={() => setView('blog')}
                 className="px-6 py-3 glass rounded-2xl text-[10px] font-black uppercase tracking-widest hover:text-blue-400 transition-all flex items-center gap-2"
               >
-                Ver Todo o Blog <ArrowRight size={14} />
+                View Full Blog <ArrowRight size={14} />
               </button>
             </div>
 
@@ -793,7 +793,7 @@ export default function App() {
                 </div>
               ))}
               {posts.filter(p => p.status === 'Publicado').length === 0 && (
-                <div className="col-span-3 text-center py-12 text-gray-600 italic">Nenhum post publicado ainda.</div>
+                <div className="col-span-3 text-center py-12 text-gray-600 italic">No posts published yet.</div>
               )}
             </div>
           </div>
@@ -804,11 +804,11 @@ export default function App() {
           <div className="container mx-auto px-6">
             <div className="flex flex-col items-center text-center mb-16 space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-black uppercase tracking-widest">
-                Portfólio de Elite
+                Portfolio de Elite
               </div>
-              <h2 className="text-4xl md:text-6xl font-black text-white">Cases de <span className="gradient-text italic">Sucesso.</span></h2>
+              <h2 className="text-4xl md:text-6xl font-black text-white">Success <span className="gradient-text italic">Stories.</span></h2>
               <p className="text-gray-500 max-w-xl mx-auto">
-                Transformamos ideias complexas em ecossistemas digitais lucrativos e de alta performance.
+                We transform complex ideas into profitable, high-performance digital ecosystems.
               </p>
             </div>
           </div>
@@ -820,7 +820,7 @@ export default function App() {
               onClick={() => setView('portfolio')}
               className="px-8 py-4 glass rounded-2xl font-bold text-gray-400 hover:text-white transition-all hover:bg-white/5"
             >
-              Ver Todos os Projetos
+              View All Projects
             </button>
           </div>
         </section>
@@ -838,10 +838,10 @@ export default function App() {
               <p className="text-blue-500 font-bold">{config.email}</p>
             </div>
             <div className="space-y-4">
-              <h4 className="font-bold text-xs uppercase tracking-widest text-gray-400">Navegação</h4>
+              <h4 className="font-bold text-xs uppercase tracking-widest text-gray-400">Navigation</h4>
               <nav className="flex flex-col gap-2">
-                <a href="#servicos" className="text-sm text-gray-500 hover:text-white transition-colors">Serviços</a>
-                <a href="#portfolio" className="text-sm text-gray-500 hover:text-white transition-colors">Portfólio</a>
+                <a href="#servicos" className="text-sm text-gray-500 hover:text-white transition-colors">Services</a>
+                <a href="#portfolio" className="text-sm text-gray-500 hover:text-white transition-colors">Portfolio</a>
                 <button onClick={handleOpenDashboard} className="text-sm text-gray-500 hover:text-white transition-colors text-left">Admin Panel</button>
               </nav>
             </div>

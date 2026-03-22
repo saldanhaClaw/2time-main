@@ -15,46 +15,46 @@ import { Service, PortfolioItem } from './types';
 export const SERVICES: Service[] = [
   {
     id: 'automation',
-    title: 'Automação & Sistemas Inteligentes',
+    title: 'Automation & Intelligent Systems',
     icon: <Zap className="w-6 h-6 text-blue-400" />,
     items: [
-      'Automação de processos internos',
-      'Integração CRM, Pagamentos, WhatsApp',
-      'Webhooks e fluxos personalizados',
-      'Dashboards e painéis SaaS'
+      'Internal process automation',
+      'CRM, Payments, WhatsApp integration',
+      'Custom webhooks and workflows',
+      'SaaS dashboards and panels'
     ]
   },
   {
     id: 'custom',
-    title: 'Sistemas Personalizados',
+    title: 'Custom Systems',
     icon: <Code className="w-6 h-6 text-indigo-400" />,
     items: [
-      'MVPs e MicroSaaS',
-      'Plataformas internas de gestão',
-      'Sistemas multi-tenant',
-      'Arquitetura escalável'
+      'MVPs and MicroSaaS',
+      'Internal management platforms',
+      'Multi-tenant systems',
+      'Scalable architecture'
     ]
   },
   {
     id: 'seo',
-    title: 'SEO Estratégico & Performance',
+    title: 'Strategic SEO & Performance',
     icon: <Search className="w-6 h-6 text-purple-400" />,
     items: [
-      'SEO técnico avançado',
-      'Foco em negócios B2B',
-      'Estruturação para rankeamento',
-      'Tráfego orgânico previsível'
+      'Advanced technical SEO',
+      'B2B business focus',
+      'Ranking structure optimization',
+      'Predictable organic traffic'
     ]
   },
   {
     id: 'platforms',
-    title: 'Sites & Plataformas',
+    title: 'Websites & Platforms',
     icon: <Layout className="w-6 h-6 text-pink-400" />,
     items: [
-      'Landing pages de alta conversão',
-      'Sites institucionais estratégicos',
-      'Portais complexos',
-      'Experiência do usuário (UX)'
+      'High-conversion landing pages',
+      'Strategic corporate websites',
+      'Complex portals',
+      'User experience (UX)'
     ]
   }
 ];
@@ -63,25 +63,25 @@ export const PORTFOLIO: PortfolioItem[] = [
   {
     // Fix: Changed id from number to string to comply with PortfolioItem interface
     id: '1',
-    title: 'Sistema de Gestão Logística',
-    category: 'Sistemas Personalizados',
-    description: 'Automação completa de frota e rastreamento em tempo real.',
+    title: 'Logistics Management System',
+    category: 'Custom Systems',
+    description: 'Complete fleet automation and real-time tracking.',
     image: 'https://picsum.photos/seed/logistics/800/600'
   },
   {
     // Fix: Changed id from number to string to comply with PortfolioItem interface
     id: '2',
-    title: 'Dashboard de Vendas SaaS',
+    title: 'SaaS Sales Dashboard',
     category: 'Automação',
-    description: 'Integração de múltiplos gateways de pagamento e métricas avançadas.',
+    description: 'Multiple payment gateway integration and advanced metrics.',
     image: 'https://picsum.photos/seed/dashboard/800/600'
   },
   {
     // Fix: Changed id from number to string to comply with PortfolioItem interface
     id: '3',
-    title: 'Portal de Conteúdo B2B',
-    category: 'SEO & Crescimento',
-    description: 'Arquitetura focada em captura de leads qualificados via orgânico.',
+    title: 'B2B Content Portal',
+    category: 'SEO & Growth',
+    description: 'Architecture focused on qualified lead capture via organic traffic.',
     image: 'https://picsum.photos/seed/content/800/600'
   }
 ];
