@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://2timeweb.com.br/sitemap.xml
