@@ -1,0 +1,9 @@
+"use strict";(()=>{var e={};e.id=717,e.ids=[717],e.modules={399:e=>{e.exports=require("next/dist/compiled/next-server/app-page.runtime.prod.js")},517:e=>{e.exports=require("next/dist/compiled/next-server/app-route.runtime.prod.js")},7316:(e,t,s)=>{s.r(t),s.d(t,{originalPathname:()=>d,patchFetch:()=>x,requestAsyncStorage:()=>m,routeModule:()=>p,serverHooks:()=>u,staticGenerationAsyncStorage:()=>c});var a={};s.r(a),s.d(a,{GET:()=>l});var r=s(9303),o=s(8716),i=s(670),n=s(7070);async function l(){let e="https://2timeweb.com",t=[e,`${e}/services`,`${e}/services/micro-saas-development`,`${e}/services/ai-sdr-chatbot`,`${e}/services/custom-saas-development`,`${e}/services/white-label-saas`,`${e}/portfolio`,`${e}/blog`,`${e}/contact`,`${e}/about`,`${e}/privacy`,`${e}/terms`,`${e}/blog/build-micro-saas-in-6-weeks-2024`,`${e}/blog/ai-automation-agency-small-business`,`${e}/blog/white-label-saas-10k-mrr`],s=`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${t.map(e=>`  <url>
+    <loc>${e}</loc>
+    <lastmod>${new Date().toISOString().split("T")[0]}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>`).join("\n")}
+</urlset>`;return new n.NextResponse(s,{headers:{"Content-Type":"application/xml","Cache-Control":"public, max-age=86400, s-maxage=86400"}})}let p=new r.AppRouteRouteModule({definition:{kind:o.x.APP_ROUTE,page:"/sitemap.xml/route",pathname:"/sitemap.xml",filename:"route",bundlePath:"app/sitemap.xml/route"},resolvedPagePath:"C:\\Users\\vinib\\.openclaw\\workspace\\2timeweb\\src\\app\\sitemap.xml\\route.ts",nextConfigOutput:"standalone",userland:a}),{requestAsyncStorage:m,staticGenerationAsyncStorage:c,serverHooks:u}=p,d="/sitemap.xml/route";function x(){return(0,i.patchFetch)({serverHooks:u,staticGenerationAsyncStorage:c})}}};var t=require("../../webpack-runtime.js");t.C(e);var s=e=>t(t.s=e),a=t.X(0,[276,972],()=>s(7316));module.exports=a})();

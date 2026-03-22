@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 255, 255, 255;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  font-family: 'Inter', sans-serif;
+}
+
+/* Custom utilities */
+@layer utilities {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Responsive breakpoints testing classes */
+@media (max-width: 375px) {
+  .test-mobile-375 { border: 2px solid red; }
+}
+@media (max-width: 768px) {
+  .test-tablet-768 { border: 2px blue solid; }
+}
+@media (min-width: 1440px) {
+  .test-desktop-1440 { border: 2px green solid; }
+}

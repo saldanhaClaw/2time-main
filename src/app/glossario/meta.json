@@ -1,0 +1,22 @@
+{
+  "created": "2026-03-22",
+  "description": "Glossário técnico da 2timeweb com 9 termos essenciais para desenvolvedores e empreendedores SaaS.",
+  "keywords": [
+    "glossário técnico",
+    "SaaS",
+    "Micro-SaaS",
+    "AI Automation",
+    "CRM",
+    "WhatsApp API",
+    "SEO técnico",
+    "Stripe",
+    "Neon",
+    "CI/CD"
+  ],
+  "meta": {
+    "title": "Glossário Técnico | 2timeweb",
+    "description": "Domine os conceitos fundamentais de tecnologia e SaaS com nosso glossário completo. Definições claras, exemplos práticos e links para conteúdos relacionados.",
+    "ogImage": "/images/glossario-og.png",
+    "canonical": "https://2timeweb.com/glossario"
+  }
+}
