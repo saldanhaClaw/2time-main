@@ -182,26 +182,26 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
   };
 
   const formFields = {
-    header: 'Bem-vindo de volta',
-    subHeader: 'Acesse o painel de controle da 2TimeWeb',
+    header: 'Welcome Back',
+    subHeader: 'Access the 2TimeWeb control panel',
     fields: [
       {
         label: 'Email',
         required: true,
         type: 'email' as const,
-        placeholder: 'seu@email.com',
+        placeholder: 'your@email.com',
         onChange: (e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value),
       },
       {
-        label: 'Senha',
+        label: 'Password',
         required: true,
         type: 'password' as const,
         placeholder: '••••••••',
         onChange: (e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value),
       },
     ],
-    submitButton: loading ? 'Carregando...' : 'Entrar no Sistema',
-    textVariantButton: 'Esqueceu sua senha?',
+    submitButton: loading ? 'Loading...' : 'Sign In',
+    textVariantButton: 'Forgot your password?',
     errorField: error || undefined
   };
 
@@ -225,7 +225,7 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
         <div className='w-full lg:w-1/2 h-full flex flex-col justify-center items-center px-6'>
           <AuthTabs
             formFields={formFields}
-            goTo={() => alert('Recuperação de senha não configurada.')}
+            goTo={() => alert('Password recovery not configured.')}
             handleSubmit={handleSubmit}
           />
         </div>

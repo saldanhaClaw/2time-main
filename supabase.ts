@@ -5,15 +5,55 @@ import { neon } from '@neondatabase/serverless';
 const DATABASE_URL = 'postgresql://neondb_owner:npg_6CuNlkeVUrD9@ep-cool-morning-ac6lqq9i-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require';
 const sql = neon(DATABASE_URL);
 
-// --- Auth stub (no Supabase auth — open admin for now) ---
+// --- Admin credentials ---
+const ADMIN_EMAIL = 'admin@2timeweb.com';
+const ADMIN_PASSWORD = '2Time@Adm2026';
+
+const SESSION_KEY = '2tw_session';
+
+function getStoredSession() {
+  try {
+    const stored = localStorage.getItem(SESSION_KEY);
+    if (stored) return JSON.parse(stored);
+  } catch {}
+  return null;
+}
+
+function setStoredSession(session: any) {
+  localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+}
+
+function clearStoredSession() {
+  localStorage.removeItem(SESSION_KEY);
+}
+
+// --- Auth with real credential validation ---
 const authStub = {
-  getSession: () => Promise.resolve({ data: { session: { user: { email: 'admin@2timeweb.com' } } } }),
+  getSession: () => {
+    const session = getStoredSession();
+    return Promise.resolve({ data: { session } });
+  },
   onAuthStateChange: (_event: string, callback: any) => {
-    callback('SIGNED_IN', { user: { email: 'admin@2timeweb.com' } });
+    const session = getStoredSession();
+    if (session) {
+      setTimeout(() => callback('SIGNED_IN', session), 0);
+    } else {
+      setTimeout(() => callback('SIGNED_OUT', null), 0);
+    }
     return { data: { subscription: { unsubscribe: () => {} } } };
   },
-  signInWithPassword: (_creds: any) => Promise.resolve({ data: { session: { user: { email: 'admin@2timeweb.com' } } }, error: null }),
-  signOut: () => Promise.resolve({ error: null }),
+  signInWithPassword: (creds: { email: string; password: string }) => {
+    if (creds.email === ADMIN_EMAIL && creds.password === ADMIN_PASSWORD) {
+      const session = { user: { email: ADMIN_EMAIL } };
+      setStoredSession(session);
+      return Promise.resolve({ data: { session }, error: null });
+    }
+    return Promise.resolve({ data: { session: null }, error: { message: 'Invalid email or password.' } });
+  },
+  signOut: () => {
+    clearStoredSession();
+    return Promise.resolve({ error: null });
+  },
 };
 
 // --- Query builder that mimics Supabase's .from().select().insert().update().delete() ---
