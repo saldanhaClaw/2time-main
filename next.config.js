@@ -2,7 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   // Geo targeting: prioritize US edge regions
-  output: 'standalone',
   // Ensure headers for SEO
   async headers() {
     return [
