@@ -103,7 +103,7 @@ const INITIAL_CONFIG: SiteConfig = {
   logoUrl: '',
   faviconUrl: '',
   email: 'contato@2timeweb.com.br',
-  phone: '+55 11 99999-9999',
+  phone: '+55 12 99714-6957',
   address: 'São Paulo - SP / Global',
   blogFrequency: 2,
   maintenanceMode: false,
