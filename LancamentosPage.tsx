@@ -53,7 +53,7 @@ const LancamentosPage = ({ onBack, onContact }: { onBack: () => void, onContact:
                     onClick={onBack}
                     className="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-white transition-colors group"
                 >
-                    <ChevronLeft className="group-hover:-translate-x-1 transition-transform" /> Voltar ao Início
+                    <ChevronLeft className="group-hover:-translate-x-1 transition-transform" /> Voltar ao Home
                 </button>
                 <span className="text-xl font-black uppercase tracking-tighter">
                     2TIME<span className="text-blue-500">LAUNCH</span>

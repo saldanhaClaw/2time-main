@@ -154,7 +154,7 @@ const DatabaseWithRestApi = ({
                 <div className="relative z-10 flex h-[160px] w-full items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-gray-900/50 backdrop-blur-md shadow-2xl">
                     <div className="absolute bottom-8 left-12 z-10 h-7 rounded-full bg-blue-600/10 px-3 text-[10px] font-bold border border-blue-500/20 flex items-center gap-2 ">
                         <HeartHandshakeIcon className="size-3" />
-                        <span>{buttonTexts?.first || "Solução SDR"}</span>
+                        <span>{buttonTexts?.first || "SDR Solution"}</span>
                     </div>
                     <div className="absolute right-16 z-10 hidden h-7 rounded-full bg-purple-600/10 px-3 text-[10px] font-bold sm:flex border border-purple-500/20 items-center gap-2 font-bold uppercase">
                         <Folder className="size-3" />

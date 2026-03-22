@@ -44,7 +44,7 @@ export const SERVICES_DATA: Record<string, ServiceContent> = {
         subtitle: 'Domine a primeira página do Google',
         description: 'Transformamos seu site em uma máquina de vendas orgânicas com estratégias avançadas de SEO on-page, técnico e link building de alta autoridade.',
         icon: <Search className="w-8 h-8 text-blue-500" />,
-        features: ['Auditoria Técnica Completa', 'Pesquisa de Keywords de Intenção', 'Otimização de Performance (Core Web Vitals)', 'Estratégia de Conteúdo Semântico'],
+        features: ['Auditoria Técnica Completa', 'Pesquisa de Keywords de Intenção', 'Otimização de Performance (Core Web Vitals)', 'Estratégia de Content Semântico'],
         benefits: [
             { title: 'Tráfego Qualificado', desc: 'Atraia pessoas que já estão procurando pelo seu serviço.' },
             { title: 'Custo Zero por Clique', desc: 'Reduza sua dependência de anúncios pagos a longo prazo.' },
@@ -98,7 +98,7 @@ export const SERVICES_DATA: Record<string, ServiceContent> = {
         id: 'atendimento-ia',
         title: 'Automação de Atendimento com IA',
         subtitle: 'Seu time atendendo 24/7 sem cansar',
-        description: 'Implementamos agentes virtuais inteligentes no WhatsApp e Site que qualificam leads e agendam reuniões automaticamente.',
+        description: 'We implement intelligent virtual agents on WhatsApp and Website that qualify leads and schedule meetings automatically.',
         icon: <Bot className="w-8 h-8 text-indigo-500" />,
         features: ['Integração com GPT-4', 'Atendimento Humanizado', 'Agendamento Direto no Calendário', 'Transferência para Humano Se Necessário'],
         benefits: [
@@ -114,7 +114,7 @@ export const SERVICES_DATA: Record<string, ServiceContent> = {
         subtitle: 'Sua empresa no piloto automático',
         description: 'Conectamos suas ferramentas (CRMs, Planilhas, ERPs) para eliminar tarefas manuais e erros humanos.',
         icon: <Workflow className="w-8 h-8 text-cyan-500" />,
-        features: ['Integrações via Make/Zapier', 'Dashboard de Monitoramento', 'Relatórios Automáticos', 'Webhooks Personalizados'],
+        features: ['Integrations via Make/Zapier', 'Dashboard de Monitoramento', 'Relatórios Automáticos', 'Webhooks Personalizados'],
         benefits: [
             { title: 'Eficiência Operacional', desc: 'Faça mais com menos tempo e recursos.' },
             { title: 'Zero Erros', desc: 'Sistemas não esquecem de enviar e-mails ou atualizar dados.' },
@@ -289,7 +289,7 @@ const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack, onSubmitLe
                                     </div>
                                     <div>
                                         <h4 className="text-2xl font-bold mb-2">Recebemos sua Mensagem!</h4>
-                                        <p className="text-gray-400">Em instantes um especialista entrará em contato pelo WhatsApp ou E-mail.</p>
+                                        <p className="text-gray-400">A specialist will contact you shortly via WhatsApp or Email.</p>
                                     </div>
                                     <button onClick={onBack} className="px-8 py-3 glass rounded-xl text-sm font-bold">Voltar para Home</button>
                                 </div>
@@ -297,7 +297,7 @@ const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack, onSubmitLe
                                 <form onSubmit={handleSubmit} className="space-y-4">
                                     <div className="grid md:grid-cols-2 gap-4">
                                         <div className="space-y-2">
-                                            <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest pl-2">Nome Completo</label>
+                                            <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest pl-2">Full Name</label>
                                             <input
                                                 required
                                                 type="text"
@@ -308,7 +308,7 @@ const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack, onSubmitLe
                                             />
                                         </div>
                                         <div className="space-y-2">
-                                            <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest pl-2">E-mail Corporativo</label>
+                                            <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest pl-2">Corporate Email</label>
                                             <input
                                                 required
                                                 type="email"

@@ -94,10 +94,10 @@ const Dashboard: React.FC<DashboardProps> = ({
     { id: 'overview', label: 'Analytics', icon: <BarChart3 className="w-5 h-5" /> },
     { id: 'leads', label: 'Leads (CRM)', icon: <Users className="w-5 h-5" /> },
     { id: 'blog', label: 'Blog & IA', icon: <FileText className="w-5 h-5" /> },
-    { id: 'portfolio', label: 'Portfólio', icon: <Briefcase className="w-5 h-5" /> },
+    { id: 'portfolio', label: 'Portfolio', icon: <Briefcase className="w-5 h-5" /> },
     { id: 'proposals', label: 'Propostas', icon: <FileSignature className="w-5 h-5" /> },
-    { id: 'finance', label: 'Financeiro', icon: <DollarSign className="w-5 h-5" /> },
-    { id: 'settings', label: 'Configurações', icon: <SettingsIcon className="w-5 h-5" /> },
+    { id: 'finance', label: 'Financial', icon: <DollarSign className="w-5 h-5" /> },
+    { id: 'settings', label: 'Settings', icon: <SettingsIcon className="w-5 h-5" /> },
   ];
 
   return (
@@ -142,7 +142,7 @@ const Dashboard: React.FC<DashboardProps> = ({
           <div className="flex items-center gap-4">
             {config.maintenanceMode && (
               <div className="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-[10px] font-black uppercase rounded-full animate-pulse">
-                Modo Construção Ativo
+                Construction Mode Active
               </div>
             )}
             <div className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center border border-white/10">
@@ -166,7 +166,7 @@ const Dashboard: React.FC<DashboardProps> = ({
 // --- SUB-COMPONENTS ---
 
 const OverviewTab = ({ leads, proposals, transactions }: { leads: Lead[], proposals: Proposal[], transactions: Transaction[] }) => {
-  const receitas = transactions.filter(t => t.type === 'Receita').reduce((acc, t) => acc + Number(t.amount), 0);
+  const receitas = transactions.filter(t => t.type === 'Revenue').reduce((acc, t) => acc + Number(t.amount), 0);
   const pendingValue = proposals.filter(p => p.status === 'Enviada').reduce((acc, p) => acc + Number(p.value), 0);
   const conversionRate = proposals.length > 0
     ? (proposals.filter(p => p.status === 'Aceita').length / proposals.length) * 100
@@ -209,7 +209,7 @@ const OverviewTab = ({ leads, proposals, transactions }: { leads: Lead[], propos
         <div className="glass p-8 rounded-[2rem] border-white/5 space-y-4 bg-gradient-to-br from-orange-600/5 to-transparent">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-500"><MousePointer2 size={18} /></div>
-            <p className="text-[10px] font-black uppercase tracking-widest text-gray-500">Taxa de Conversão</p>
+            <p className="text-[10px] font-black uppercase tracking-widest text-gray-500">Conversion Rate</p>
           </div>
           <h4 className="text-4xl font-black">{conversionRate.toFixed(1)}%</h4>
           <p className="text-[10px] font-bold text-gray-600">Baseado em propostas</p>
@@ -233,7 +233,7 @@ const OverviewTab = ({ leads, proposals, transactions }: { leads: Lead[], propos
         </div>
 
         <div className="glass p-10 rounded-[2.5rem] border-white/5 space-y-6">
-          <h4 className="font-bold flex items-center gap-2"><Clock size={18} className="text-orange-500" /> Últimos Leads</h4>
+          <h4 className="font-bold flex items-center gap-2"><Clock size={18} className="text-orange-500" /> Recent Leads</h4>
           <div className="space-y-4">
             {leads.slice(0, 5).map(lead => (
               <div key={lead.id} className="flex items-center gap-4 p-3 hover:bg-white/5 rounded-2xl transition-all border border-transparent hover:border-white/5">
@@ -272,7 +272,7 @@ const PortfolioTab = ({ portfolio, setPortfolio }: { portfolio: PortfolioItem[],
   };
 
   const handleDelete = async (id: string) => {
-    if (confirm('Excluir este projeto?')) {
+    if (confirm('Delete este projeto?')) {
       await supabase.from('portfolio_items').delete().eq('id', id);
       setPortfolio(portfolio.filter(p => p.id !== id));
     }
@@ -281,7 +281,7 @@ const PortfolioTab = ({ portfolio, setPortfolio }: { portfolio: PortfolioItem[],
   return (
     <div className="space-y-8 animate-in slide-in-from-right duration-500">
       <div className="flex justify-between items-center">
-        <h3 className="text-xl font-bold">Gestão de Casos & Projetos</h3>
+        <h3 className="text-xl font-bold">Case & Project Management</h3>
         <button
           onClick={() => setShowAdd(!showAdd)}
           className="px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-2xl font-bold flex items-center gap-2 transition-all shadow-lg shadow-blue-600/20"
@@ -295,17 +295,17 @@ const PortfolioTab = ({ portfolio, setPortfolio }: { portfolio: PortfolioItem[],
         <div className="glass p-8 rounded-[2rem] border-blue-500/20 bg-blue-600/5 grid md:grid-cols-2 gap-6">
           <div className="space-y-4">
             <div>
-              <label className="text-xs font-bold text-gray-500 uppercase block mb-2">Título do Projeto</label>
+              <label className="text-xs font-bold text-gray-500 uppercase block mb-2">Project Title</label>
               <input
                 type="text"
                 value={newProject.title}
                 onChange={e => setNewProject({ ...newProject, title: e.target.value })}
                 className="w-full bg-gray-950 border border-white/10 rounded-xl px-4 py-3 focus:border-blue-500 outline-none"
-                placeholder="Ex: App de Gestão Imobiliária"
+                placeholder="E.g.: Real Estate Management App"
               />
             </div>
             <div>
-              <label className="text-xs font-bold text-gray-500 uppercase block mb-2">Categoria</label>
+              <label className="text-xs font-bold text-gray-500 uppercase block mb-2">Category</label>
               <select
                 value={newProject.category}
                 onChange={e => setNewProject({ ...newProject, category: e.target.value })}
@@ -313,7 +313,7 @@ const PortfolioTab = ({ portfolio, setPortfolio }: { portfolio: PortfolioItem[],
               >
                 <option>Assessorias</option>
                 <option>Sistemas</option>
-                <option>Automações</option>
+                <option>Automations</option>
                 <option>Sites</option>
                 <option>SEO</option>
               </select>
@@ -331,7 +331,7 @@ const PortfolioTab = ({ portfolio, setPortfolio }: { portfolio: PortfolioItem[],
           </div>
           <div className="space-y-4 flex flex-col">
             <div>
-              <label className="text-xs font-bold text-gray-500 uppercase block mb-2">Descrição Curta</label>
+              <label className="text-xs font-bold text-gray-500 uppercase block mb-2">Short Description</label>
               <textarea
                 value={newProject.description}
                 onChange={e => setNewProject({ ...newProject, description: e.target.value })}
@@ -353,7 +353,7 @@ const PortfolioTab = ({ portfolio, setPortfolio }: { portfolio: PortfolioItem[],
               onClick={handleAdd}
               className="mt-auto py-4 bg-white text-gray-950 rounded-2xl font-bold hover:bg-gray-200 transition-colors"
             >
-              Publicar no Portfólio
+              Publish no Portfolio
             </button>
           </div>
         </div>
@@ -393,7 +393,7 @@ const LeadsTab = ({ leads, setLeads }: { leads: Lead[], setLeads: any }) => {
   };
 
   const handleDelete = async (id: string) => {
-    if (confirm('Excluir lead?')) {
+    if (confirm('Delete lead?')) {
       await supabase.from('leads').delete().eq('id', id);
       setLeads(leads.filter(x => x.id !== id));
     }
@@ -407,7 +407,7 @@ const LeadsTab = ({ leads, setLeads }: { leads: Lead[], setLeads: any }) => {
             <th className="px-8 py-6">Lead</th>
             <th className="px-8 py-6">Interesse</th>
             <th className="px-8 py-6">Status</th>
-            <th className="px-8 py-6 text-right">Ações</th>
+            <th className="px-8 py-6 text-right">Actions</th>
           </tr>
         </thead>
         <tbody className="divide-y divide-white/5">
@@ -466,13 +466,13 @@ const BlogTab = ({ posts, setPosts, queue, setQueue, config, setConfig }: { post
 
   const suggestKeywords = async () => {
     if (!config.geminiApiKey && !config.openaiApiKey) {
-      alert('Configure uma chave de API nas configurações primeiro.');
+      alert('Configure an API key in settings first.');
       return;
     }
 
     setIsSuggesting(true);
     const existingTitles = posts.map(p => p.title).join(', ');
-    const prompt = `Baseado nos tópicos que já escrevemos: [${existingTitles}], sugira 8 novas palavras-chave ou temas de alta tendência em tecnologia, IA, marketing digital e automação para o blog 2TimeWeb. Foque em temas que atraiam empresários e CEOs. Responda APENAS as palavras-chave separadas por vírgula, sem explicações.`;
+    const prompt = `Based on the topics we already wrote: [${existingTitles}], suggest 8 new trending keywords or topics in technology, AI, digital marketing and automation for the 2TimeWeb blog. Focus on topics that attract entrepreneurs and CEOs. Answer ONLY the keywords separated by commas, no explanations.`;
 
     try {
       if (config.preferredAiModel === 'gemini') {
@@ -520,7 +520,7 @@ const BlogTab = ({ posts, setPosts, queue, setQueue, config, setConfig }: { post
         const ai = new GoogleGenAI({ apiKey: config.geminiApiKey || '' });
         const result = await ai.models.generateContent({
           model: "gemini-pro",
-          contents: [{ role: 'user', parts: [{ text: `Escreva um post de blog autoritativo sobre "${target.keyword}". Formate o resultado como JSON PURO (sem blocos de markdown em volta): {"title": "Título", "content": "Conteúdo Markdown"}. Use tom técnico e elegante.` }] }]
+          contents: [{ role: 'user', parts: [{ text: `Write an authoritative blog post about "${target.keyword}". Format the result as PURE JSON (without markdown blocks): {"title": "Title", "content": "Markdown Content"}. Use a technical and elegant tone.` }] }]
         });
 
         let text = result.text || '';
@@ -540,7 +540,7 @@ const BlogTab = ({ posts, setPosts, queue, setQueue, config, setConfig }: { post
           },
           body: JSON.stringify({
             model: "gpt-4-turbo-preview",
-            messages: [{ role: "user", content: `Escreva um post de blog autoritativo sobre "${target.keyword}". Formate o resultado como JSON: {"title": "Título", "content": "Conteúdo Markdown"}. Use tom técnico e elegante.` }],
+            messages: [{ role: "user", content: `Write an authoritative blog post about "${target.keyword}". Format the result as JSON: {"title": "Title", "content": "Markdown Content"}. Use a technical and elegant tone.` }],
             response_format: { type: "json_object" }
           })
         });
@@ -558,18 +558,18 @@ const BlogTab = ({ posts, setPosts, queue, setQueue, config, setConfig }: { post
 
       const newPost = {
         title: data.title || target.keyword,
-        content: data.content || 'Erro ao gerar conteúdo.',
+        content: data.content || 'Error generating content.',
         author: config.preferredAiModel === 'gemini' ? 'Gemini AI' : 'GPT AI',
         featured_image: `https://loremflickr.com/1200/630/technology,business,minimal,${encodeURIComponent(target.keyword)}`,
         date: new Date().toISOString(),
-        status: 'Rascunho' as const
+        status: 'Draft' as const
       };
 
       const { data: savedPost } = await supabase.from('blog_posts').insert([newPost]).select().single();
       if (savedPost) setPosts([savedPost, ...posts]);
 
-      await supabase.from('blog_queue').update({ status: 'Concluído' }).eq('id', target.id);
-      setQueue(prev => prev.map(q => q.id === target.id ? { ...q, status: 'Concluído' } : q));
+      await supabase.from('blog_queue').update({ status: 'Completed' }).eq('id', target.id);
+      setQueue(prev => prev.map(q => q.id === target.id ? { ...q, status: 'Completed' } : q));
     } catch (err) {
       console.error('Erro na IA:', err);
       await supabase.from('blog_queue').update({ status: 'Erro' }).eq('id', target.id);
@@ -580,7 +580,7 @@ const BlogTab = ({ posts, setPosts, queue, setQueue, config, setConfig }: { post
   };
 
   const togglePostStatus = async (post: BlogPost) => {
-    const newStatus = post.status === 'Publicado' ? 'Rascunho' : 'Publicado';
+    const newStatus = post.status === 'Published' ? 'Draft' : 'Published';
     const { error } = await supabase.from('blog_posts').update({ status: newStatus }).eq('id', post.id);
     if (!error) {
       setPosts(posts.map(p => p.id === post.id ? { ...p, status: newStatus } : p));
@@ -618,16 +618,16 @@ const BlogTab = ({ posts, setPosts, queue, setQueue, config, setConfig }: { post
   return (
     <div className="space-y-8 pb-20">
       <div className="glass p-8 rounded-[2rem] border-white/5 bg-gradient-to-br from-blue-600/10 to-transparent">
-        <h3 className="text-xl font-bold mb-4 flex items-center gap-2"><Sparkles className="text-blue-400" /> Automação de Conteúdo (Bulk/Auto)</h3>
-        <p className="text-xs text-gray-500 mb-6 font-medium">Insira palavras-chave separadas por vírgula. A IA criará rascunhos automáticos para cada uma.</p>
+        <h3 className="text-xl font-bold mb-4 flex items-center gap-2"><Sparkles className="text-blue-400" /> Content Automation (Bulk/Auto)</h3>
+        <p className="text-xs text-gray-500 mb-6 font-medium">Enter keywords separated by commas. AI will create automatic drafts for each one.</p>
         <textarea
-          placeholder="Ex: Como escala um negócio digital, Melhores automações para 2025..."
+          placeholder="E.g.: How to scale a digital business, Best automations for 2025..."
           value={keywordInput}
           onChange={e => setKeywordInput(e.target.value)}
           className="w-full h-24 bg-gray-950 border border-white/10 rounded-2xl p-4 mb-4 focus:border-blue-500 outline-none text-sm"
         />
         <div className="flex gap-4">
-          <button onClick={addKeywords} className="px-8 py-3 bg-white text-gray-950 rounded-xl font-bold text-sm hover:bg-gray-200 transition-all">Adicionar à Fila</button>
+          <button onClick={addKeywords} className="px-8 py-3 bg-white text-gray-950 rounded-xl font-bold text-sm hover:bg-gray-200 transition-all">Add to Queue</button>
 
           <button
             onClick={suggestKeywords}
@@ -654,10 +654,10 @@ const BlogTab = ({ posts, setPosts, queue, setQueue, config, setConfig }: { post
         <div className="glass p-8 rounded-[2rem] border-white/5 space-y-4">
           <h4 className="font-bold flex items-center justify-between text-sm">
             <span className="flex items-center gap-2"><Clock size={16} className="text-gray-500" /> Fila de Espera</span>
-            <span className="bg-white/5 px-2 py-0.5 rounded text-[10px] text-gray-400">{queue.filter(q => q.status !== 'Concluído').length}</span>
+            <span className="bg-white/5 px-2 py-0.5 rounded text-[10px] text-gray-400">{queue.filter(q => q.status !== 'Completed').length}</span>
           </h4>
           <div className="space-y-3 max-h-[30rem] overflow-y-auto pr-2 custom-scrollbar">
-            {queue.filter(q => q.status !== 'Concluído').map(q => (
+            {queue.filter(q => q.status !== 'Completed').map(q => (
               <div key={q.id} className="p-4 bg-white/5 rounded-xl border border-white/5 flex justify-between items-center group animate-in slide-in-from-left duration-300">
                 <div className="flex flex-col min-w-0">
                   <span className="text-sm font-bold truncate pr-2">{q.keyword}</span>
@@ -668,7 +668,7 @@ const BlogTab = ({ posts, setPosts, queue, setQueue, config, setConfig }: { post
                 </button>
               </div>
             ))}
-            {queue.filter(q => q.status !== 'Concluído').length === 0 && (
+            {queue.filter(q => q.status !== 'Completed').length === 0 && (
               <div className="text-center py-12 border border-dashed border-white/5 rounded-2xl">
                 <p className="text-gray-600 italic text-xs">Fila limpa.</p>
               </div>
@@ -679,11 +679,11 @@ const BlogTab = ({ posts, setPosts, queue, setQueue, config, setConfig }: { post
         {/* Column 2: Drafts/Approval */}
         <div className="glass p-8 rounded-[2rem] border-white/5 space-y-4">
           <h4 className="font-bold flex items-center justify-between text-sm">
-            <span className="flex items-center gap-2"><FileSignature size={16} className="text-yellow-500" /> Aguardando Aprovação</span>
-            <span className="bg-yellow-500/10 px-2 py-0.5 rounded text-[10px] text-yellow-500">{posts.filter(p => !p.status || p.status === 'Rascunho').length}</span>
+            <span className="flex items-center gap-2"><FileSignature size={16} className="text-yellow-500" /> Awaiting Approval</span>
+            <span className="bg-yellow-500/10 px-2 py-0.5 rounded text-[10px] text-yellow-500">{posts.filter(p => !p.status || p.status === 'Draft').length}</span>
           </h4>
           <div className="space-y-3 max-h-[30rem] overflow-y-auto pr-2 custom-scrollbar">
-            {posts.filter(p => !p.status || p.status === 'Rascunho').map(post => (
+            {posts.filter(p => !p.status || p.status === 'Draft').map(post => (
               <div key={post.id} className="p-4 bg-white/5 border border-white/5 rounded-xl flex justify-between items-center group animate-in fade-in zoom-in duration-300">
                 <div className="flex-1 min-w-0 mr-4">
                   <h4 className="font-bold text-sm truncate">{post.title}</h4>
@@ -692,14 +692,14 @@ const BlogTab = ({ posts, setPosts, queue, setQueue, config, setConfig }: { post
                   </div>
                 </div>
                 <div className="flex gap-1 shrink-0">
-                  <button onClick={() => togglePostStatus(post)} className="p-2 text-gray-400 hover:text-green-500 hover:bg-green-500/10 rounded-lg transition-all" title="Aprovar e Publicar">
+                  <button onClick={() => togglePostStatus(post)} className="p-2 text-gray-400 hover:text-green-500 hover:bg-green-500/10 rounded-lg transition-all" title="Aprovar e Publish">
                     <CheckCircle2 size={14} />
                   </button>
                   <button onClick={() => setEditingPost(post)} className="p-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-lg transition-all">
                     <FileSignature size={14} />
                   </button>
                   <button onClick={async () => {
-                    if (confirm('Excluir rascunho?')) {
+                    if (confirm('Delete rascunho?')) {
                       await supabase.from('blog_posts').delete().eq('id', post.id);
                       setPosts(posts.filter(p => p.id !== post.id));
                     }
@@ -709,7 +709,7 @@ const BlogTab = ({ posts, setPosts, queue, setQueue, config, setConfig }: { post
                 </div>
               </div>
             ))}
-            {posts.filter(p => !p.status || p.status === 'Rascunho').length === 0 && (
+            {posts.filter(p => !p.status || p.status === 'Draft').length === 0 && (
               <div className="text-center py-12 border border-dashed border-white/5 rounded-2xl">
                 <p className="text-gray-600 italic text-xs">Sem rascunhos.</p>
               </div>
@@ -720,25 +720,25 @@ const BlogTab = ({ posts, setPosts, queue, setQueue, config, setConfig }: { post
         {/* Column 3: Published */}
         <div className="glass p-8 rounded-[2rem] border-white/5 space-y-4">
           <h4 className="font-bold flex items-center justify-between text-sm">
-            <span className="flex items-center gap-2"><Globe size={16} className="text-blue-500" /> Publicados no Site</span>
-            <span className="bg-blue-500/10 px-2 py-0.5 rounded text-[10px] text-blue-500">{posts.filter(p => p.status === 'Publicado').length}</span>
+            <span className="flex items-center gap-2"><Globe size={16} className="text-blue-500" /> Publisheds no Site</span>
+            <span className="bg-blue-500/10 px-2 py-0.5 rounded text-[10px] text-blue-500">{posts.filter(p => p.status === 'Published').length}</span>
           </h4>
           <div className="space-y-3 max-h-[30rem] overflow-y-auto pr-2 custom-scrollbar">
-            {posts.filter(p => p.status === 'Publicado').map(post => (
+            {posts.filter(p => p.status === 'Published').map(post => (
               <div key={post.id} className="p-4 bg-green-500/5 border border-green-500/10 rounded-xl flex justify-between items-center group">
                 <div className="flex-1 min-w-0 mr-4">
                   <h4 className="font-bold text-sm truncate text-white">{post.title}</h4>
                   <p className="text-[9px] text-gray-500">{new Date(post.date).toLocaleDateString()}</p>
                 </div>
                 <div className="flex gap-1 shrink-0">
-                  <button onClick={() => togglePostStatus(post)} className="p-2 text-green-500 hover:bg-yellow-500/10 hover:text-yellow-500 rounded-lg transition-all" title="Mudar para Rascunho">
+                  <button onClick={() => togglePostStatus(post)} className="p-2 text-green-500 hover:bg-yellow-500/10 hover:text-yellow-500 rounded-lg transition-all" title="Mudar para Draft">
                     <RotateCcw size={14} />
                   </button>
-                  <button onClick={() => setEditingPost(post)} className="p-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-lg transition-all" title="Editar Post">
+                  <button onClick={() => setEditingPost(post)} className="p-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-lg transition-all" title="Edit Post">
                     <FileSignature size={14} />
                   </button>
                   <button onClick={async () => {
-                    if (confirm('Remover do site?')) {
+                    if (confirm('Remove do site?')) {
                       await supabase.from('blog_posts').delete().eq('id', post.id);
                       setPosts(posts.filter(p => p.id !== post.id));
                     }
@@ -748,7 +748,7 @@ const BlogTab = ({ posts, setPosts, queue, setQueue, config, setConfig }: { post
                 </div>
               </div>
             ))}
-            {posts.filter(p => p.status === 'Publicado').length === 0 && (
+            {posts.filter(p => p.status === 'Published').length === 0 && (
               <div className="text-center py-12 border border-dashed border-white/5 rounded-2xl">
                 <p className="text-gray-600 italic text-xs">Nenhum post ao vivo.</p>
               </div>
@@ -761,7 +761,7 @@ const BlogTab = ({ posts, setPosts, queue, setQueue, config, setConfig }: { post
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/80 backdrop-blur-sm animate-in fade-in duration-300">
           <div className="glass w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-[2.5rem] border-white/10 flex flex-col shadow-2xl">
             <div className="p-6 border-b border-white/5 flex justify-between items-center bg-gray-950/50">
-              <h3 className="text-xl font-bold flex items-center gap-2"><FileSignature className="text-blue-500" /> Editar Post</h3>
+              <h3 className="text-xl font-bold flex items-center gap-2"><FileSignature className="text-blue-500" /> Edit Post</h3>
               <button onClick={() => setEditingPost(null)} className="p-2 hover:bg-white/5 rounded-full transition-colors text-gray-400 hover:text-white">
                 <X size={20} />
               </button>
@@ -769,7 +769,7 @@ const BlogTab = ({ posts, setPosts, queue, setQueue, config, setConfig }: { post
 
             <div className="p-8 space-y-6 overflow-y-auto flex-1 custom-scrollbar bg-[#030712]/50">
               <div className="space-y-2">
-                <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Título do Post</label>
+                <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Post Title</label>
                 <input
                   type="text"
                   value={editingPost.title}
@@ -798,8 +798,8 @@ const BlogTab = ({ posts, setPosts, queue, setQueue, config, setConfig }: { post
 
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
-                  <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Conteúdo (Markdown)</label>
-                  <span className="text-[10px] text-blue-500 font-bold">Use Markdown para formatar títulos, listas e negrito</span>
+                  <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Content (Markdown)</label>
+                  <span className="text-[10px] text-blue-500 font-bold">Use Markdown to format titles, lists and bold text</span>
                 </div>
                 <textarea
                   value={editingPost.content}
@@ -820,7 +820,7 @@ const BlogTab = ({ posts, setPosts, queue, setQueue, config, setConfig }: { post
                 onClick={updatePost}
                 className="px-10 py-3 bg-blue-600 hover:bg-blue-500 rounded-xl font-bold text-sm text-white shadow-lg shadow-blue-600/20 transition-all flex items-center gap-2 hover:scale-105 active:scale-95"
               >
-                <Save size={16} /> Salvar Alterações
+                <Save size={16} /> Save Changes
               </button>
             </div>
           </div>
@@ -888,16 +888,16 @@ const SettingsTab = ({ config, setConfig }: { config: SiteConfig, setConfig: any
     setSaving(true);
     await setConfig(temp);
     setSaving(false);
-    alert('Configurações salvas!');
+    alert('Settings saved!');
   };
 
   return (
     <div className="grid lg:grid-cols-4 gap-8">
       <aside className="space-y-2">
         <button onClick={() => setActiveSub('geral')} className={`w-full text-left px-4 py-3 rounded-xl text-sm font-bold transition-all ${activeSub === 'geral' ? 'bg-white/10 text-white' : 'text-gray-500'}`}>Identidade</button>
-        <button onClick={() => setActiveSub('ia')} className={`w-full text-left px-4 py-3 rounded-xl text-sm font-bold transition-all ${activeSub === 'ia' ? 'bg-white/10 text-white' : 'text-gray-500'}`}>Inteligência Artificial</button>
+        <button onClick={() => setActiveSub('ia')} className={`w-full text-left px-4 py-3 rounded-xl text-sm font-bold transition-all ${activeSub === 'ia' ? 'bg-white/10 text-white' : 'text-gray-500'}`}>Artificial Intelligence</button>
         <button onClick={() => setActiveSub('seo')} className={`w-full text-left px-4 py-3 rounded-xl text-sm font-bold transition-all ${activeSub === 'seo' ? 'bg-white/10 text-white' : 'text-gray-500'}`}>SEO (Robots/Sitemap)</button>
-        <button onClick={() => setActiveSub('construcao')} className={`w-full text-left px-4 py-3 rounded-xl text-sm font-bold transition-all ${activeSub === 'construcao' ? 'bg-white/10 text-white' : 'text-gray-500'}`}>Página Construção</button>
+        <button onClick={() => setActiveSub('construcao')} className={`w-full text-left px-4 py-3 rounded-xl text-sm font-bold transition-all ${activeSub === 'construcao' ? 'bg-white/10 text-white' : 'text-gray-500'}`}>Construction Page</button>
       </aside>
 
       <div className="lg:col-span-3 glass p-10 rounded-[2.5rem] border-white/5 space-y-8">
@@ -906,7 +906,7 @@ const SettingsTab = ({ config, setConfig }: { config: SiteConfig, setConfig: any
             <h3 className="text-xl font-bold flex items-center gap-2"><Globe size={20} className="text-blue-500" /> Geral</h3>
             <div className="grid grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Nome do Site</label>
+                <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Site Name</label>
                 <input type="text" value={temp.name} onChange={e => setTemp({ ...temp, name: e.target.value })} className="w-full bg-gray-950 border border-white/10 rounded-xl p-3 focus:border-blue-500 outline-none" />
               </div>
               <div className="space-y-2">
@@ -930,7 +930,7 @@ const SettingsTab = ({ config, setConfig }: { config: SiteConfig, setConfig: any
 
             <div className="grid grid-cols-2 gap-6 pt-4 border-t border-white/5">
               <div className="space-y-2">
-                <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2"><Phone size={12} /> WhatsApp/Telefone</label>
+                <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2"><Phone size={12} /> Phone Number</label>
                 <input type="text" value={temp.phone} onChange={e => setTemp({ ...temp, phone: e.target.value })} className="w-full bg-gray-950 border border-white/10 rounded-xl p-3 focus:border-blue-500 outline-none" />
               </div>
               <div className="space-y-2">
@@ -940,7 +940,7 @@ const SettingsTab = ({ config, setConfig }: { config: SiteConfig, setConfig: any
             </div>
 
             <div className="space-y-2">
-              <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2"><MapPin size={12} /> Endereço Residencial/Comercial</label>
+              <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2"><MapPin size={12} /> Business/Home Address</label>
               <input type="text" value={temp.address} onChange={e => setTemp({ ...temp, address: e.target.value })} className="w-full bg-gray-950 border border-white/10 rounded-xl p-3 focus:border-blue-500 outline-none" />
             </div>
 
@@ -963,12 +963,12 @@ const SettingsTab = ({ config, setConfig }: { config: SiteConfig, setConfig: any
 
         {activeSub === 'ia' && (
           <div className="space-y-6">
-            <h3 className="text-xl font-bold flex items-center gap-2"><Cpu size={20} className="text-blue-500" /> Inteligência Artificial</h3>
-            <p className="text-sm text-gray-500">Configure as chaves de API e o modelo preferido para geração de conteúdo automático.</p>
+            <h3 className="text-xl font-bold flex items-center gap-2"><Cpu size={20} className="text-blue-500" /> Artificial Intelligence</h3>
+            <p className="text-sm text-gray-500">Configure API keys and preferred model for automatic content generation.</p>
 
             <div className="space-y-6 pt-4 border-t border-white/5">
               <div className="space-y-2">
-                <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Modelo Preferido</label>
+                <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Preferred Model</label>
                 <div className="grid grid-cols-2 gap-4">
                   <button
                     onClick={() => setTemp({ ...temp, preferredAiModel: 'gemini' })}
@@ -1015,12 +1015,12 @@ const SettingsTab = ({ config, setConfig }: { config: SiteConfig, setConfig: any
 
         {activeSub === 'ia' && (
           <div className="space-y-6">
-            <h3 className="text-xl font-bold flex items-center gap-2"><Cpu size={20} className="text-blue-500" /> Inteligência Artificial</h3>
-            <p className="text-sm text-gray-500">Configure as chaves de API e o modelo preferido para geração de conteúdo automático.</p>
+            <h3 className="text-xl font-bold flex items-center gap-2"><Cpu size={20} className="text-blue-500" /> Artificial Intelligence</h3>
+            <p className="text-sm text-gray-500">Configure API keys and preferred model for automatic content generation.</p>
 
             <div className="space-y-6 pt-4 border-t border-white/5">
               <div className="space-y-2">
-                <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Modelo Preferido</label>
+                <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Preferred Model</label>
                 <div className="grid grid-cols-2 gap-4">
                   <button
                     onClick={() => setTemp({ ...temp, preferredAiModel: 'gemini' })}
@@ -1108,7 +1108,7 @@ const SettingsTab = ({ config, setConfig }: { config: SiteConfig, setConfig: any
         {activeSub === 'construcao' && (
           <div className="space-y-6">
             <div className="flex justify-between items-center">
-              <h3 className="text-xl font-bold flex items-center gap-2"><ShieldAlert size={20} className="text-yellow-500" /> Modo Manutenção</h3>
+              <h3 className="text-xl font-bold flex items-center gap-2"><ShieldAlert size={20} className="text-yellow-500" /> Modo Maintenance</h3>
               <button
                 onClick={() => setTemp({ ...temp, maintenanceMode: !temp.maintenanceMode })}
                 className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${temp.maintenanceMode ? 'bg-red-500 text-white' : 'glass text-gray-500'}`}
@@ -1118,7 +1118,7 @@ const SettingsTab = ({ config, setConfig }: { config: SiteConfig, setConfig: any
             </div>
             <div className="space-y-4 pt-4 border-t border-white/5">
               <div className="space-y-2">
-                <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Título da Página (H1)</label>
+                <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Page Title (H1)</label>
                 <input type="text" value={temp.maintenanceTitle} onChange={e => setTemp({ ...temp, maintenanceTitle: e.target.value })} className="w-full bg-gray-950 border border-white/10 rounded-xl p-3 focus:border-blue-500 outline-none" />
               </div>
               <div className="space-y-2">
@@ -1153,7 +1153,7 @@ const ProposalsTab = ({ proposals, setProposals, config, transactions, setTransa
 
   const generateAIProposal = async () => {
     if (!config.geminiApiKey && !config.openaiApiKey) {
-      alert('Configure uma chave de API nas configurações primeiro.');
+      alert('Configure an API key in settings first.');
       return;
     }
     if (!newProp.title) {
@@ -1277,7 +1277,7 @@ const ProposalsTab = ({ proposals, setProposals, config, transactions, setTransa
             client_name: prop.clientName,
             description: `Serviço: ${prop.title}`,
             amount: prop.value,
-            type: 'Receita' as const,
+            type: 'Revenue' as const,
             date: new Date().toISOString()
           };
           const { data: newTrans } = await supabase.from('transactions').insert([trans]).select().single();
@@ -1308,7 +1308,7 @@ const ProposalsTab = ({ proposals, setProposals, config, transactions, setTransa
   };
 
   const handleDelete = async (id: string) => {
-    if (confirm('Excluir proposta?')) {
+    if (confirm('Delete proposta?')) {
       await supabase.from('proposals').delete().eq('id', id);
       setProposals(proposals.filter(p => p.id !== id));
     }
@@ -1337,7 +1337,7 @@ const ProposalsTab = ({ proposals, setProposals, config, transactions, setTransa
             </div>
             <div className="space-y-2">
               <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Detalhes do Serviço</label>
-              <input type="text" placeholder="Título do Serviço (ex: Gestão de Tráfego)" value={newProp.title} onChange={e => setNewProp({ ...newProp, title: e.target.value })} className="w-full bg-gray-950 border border-white/10 rounded-xl p-3 focus:border-blue-500 outline-none" />
+              <input type="text" placeholder="Title do Serviço (ex: Gestão de Tráfego)" value={newProp.title} onChange={e => setNewProp({ ...newProp, title: e.target.value })} className="w-full bg-gray-950 border border-white/10 rounded-xl p-3 focus:border-blue-500 outline-none" />
               <input type="number" placeholder="Valor (R$)" value={newProp.value} onChange={e => setNewProp({ ...newProp, value: Number(e.target.value) })} className="w-full bg-gray-950 border border-white/10 rounded-xl p-3 focus:border-blue-500 outline-none" />
             </div>
           </div>
@@ -1365,10 +1365,10 @@ const ProposalsTab = ({ proposals, setProposals, config, transactions, setTransa
         <table className="w-full text-left">
           <thead className="bg-gray-950/50 text-gray-500 text-[10px] uppercase font-black tracking-widest">
             <tr>
-              <th className="px-8 py-6">Cliente / Título</th>
+              <th className="px-8 py-6">Cliente / Title</th>
               <th className="px-8 py-6">Valor</th>
               <th className="px-8 py-6">Status</th>
-              <th className="px-8 py-6 text-right">Ações</th>
+              <th className="px-8 py-6 text-right">Actions</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-white/5">
@@ -1394,7 +1394,7 @@ const ProposalsTab = ({ proposals, setProposals, config, transactions, setTransa
                   </select>
                 </td>
                 <td className="px-8 py-5 text-right flex justify-end gap-2">
-                  <button onClick={() => setEditingProposal(p)} className="p-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-all" title="Editar Proposta">
+                  <button onClick={() => setEditingProposal(p)} className="p-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-all" title="Edit Proposta">
                     <FileSignature size={16} />
                   </button>
                   <button onClick={() => exportPDF(p)} className="p-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-all" title="Baixar PDF">
@@ -1417,7 +1417,7 @@ const ProposalsTab = ({ proposals, setProposals, config, transactions, setTransa
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/80 backdrop-blur-sm animate-in fade-in duration-300">
           <div className="glass w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-[2.5rem] border-white/10 flex flex-col shadow-2xl">
             <div className="p-6 border-b border-white/5 flex justify-between items-center bg-gray-950/50">
-              <h3 className="text-xl font-bold flex items-center gap-2"><FileSignature className="text-blue-500" /> Editar Proposta Comercial</h3>
+              <h3 className="text-xl font-bold flex items-center gap-2"><FileSignature className="text-blue-500" /> Edit Proposta Comercial</h3>
               <button onClick={() => setEditingProposal(null)} className="p-2 hover:bg-white/5 rounded-full transition-colors text-gray-400 hover:text-white">
                 <X size={20} />
               </button>
@@ -1447,7 +1447,7 @@ const ProposalsTab = ({ proposals, setProposals, config, transactions, setTransa
             <div className="p-6 border-t border-white/5 bg-gray-950/50 flex justify-end gap-4">
               <button onClick={() => setEditingProposal(null)} className="px-8 py-3 rounded-xl font-bold text-sm text-gray-400 hover:text-white transition-colors">Descartar</button>
               <button onClick={updateProposal} className="px-10 py-3 bg-blue-600 hover:bg-blue-500 rounded-xl font-bold text-sm text-white shadow-lg shadow-blue-600/20 transition-all flex items-center gap-2">
-                <Save size={16} /> Salvar Alterações
+                <Save size={16} /> Save Changes
               </button>
             </div>
           </div>
@@ -1458,12 +1458,12 @@ const ProposalsTab = ({ proposals, setProposals, config, transactions, setTransa
 };
 
 const FinanceTab = ({ transactions, setTransactions }: { transactions: Transaction[], setTransactions: any }) => {
-  const receitas = transactions.filter(t => t.type === 'Receita').reduce((acc, t) => acc + Number(t.amount), 0);
+  const receitas = transactions.filter(t => t.type === 'Revenue').reduce((acc, t) => acc + Number(t.amount), 0);
   const despesas = transactions.filter(t => t.type === 'Despesa').reduce((acc, t) => acc + Number(t.amount), 0);
   const saldo = receitas - despesas;
 
   const handleDelete = async (id: string) => {
-    if (confirm('Excluir esta transação? Isso não afetará a proposta original.')) {
+    if (confirm('Delete esta transação? Isso não afetará a proposta original.')) {
       const { error } = await supabase.from('transactions').delete().eq('id', id);
       if (!error) {
         setTransactions(transactions.filter(t => t.id !== id));
@@ -1475,7 +1475,7 @@ const FinanceTab = ({ transactions, setTransactions }: { transactions: Transacti
     <div className="space-y-8 animate-in fade-in transition-all">
       <div className="grid grid-cols-3 gap-6">
         <div className="glass p-8 rounded-[2rem] border-white/5 bg-gradient-to-br from-green-600/10 to-transparent">
-          <p className="text-[10px] font-black text-green-500 uppercase tracking-[0.2em] mb-2">Total Receitas</p>
+          <p className="text-[10px] font-black text-green-500 uppercase tracking-[0.2em] mb-2">Total Revenues</p>
           <h4 className="text-3xl font-black text-white">R$ {receitas.toLocaleString('pt-BR')}</h4>
         </div>
         <div className="glass p-8 rounded-[2rem] border-white/5 bg-gradient-to-br from-red-600/10 to-transparent">
@@ -1500,7 +1500,7 @@ const FinanceTab = ({ transactions, setTransactions }: { transactions: Transacti
               <th className="px-8 py-6">Cliente / Descrição</th>
               <th className="px-8 py-6">Valor</th>
               <th className="px-8 py-6">Tipo</th>
-              <th className="px-8 py-6 text-right">Ações</th>
+              <th className="px-8 py-6 text-right">Actions</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-white/5">
@@ -1513,11 +1513,11 @@ const FinanceTab = ({ transactions, setTransactions }: { transactions: Transacti
                   <p className="font-bold text-sm text-white">{t.client_name}</p>
                   <p className="text-xs text-gray-500">{t.description}</p>
                 </td>
-                <td className={`px-8 py-5 text-sm font-mono font-bold ${t.type === 'Receita' ? 'text-green-400' : 'text-red-400'}`}>
-                  {t.type === 'Receita' ? '+' : '-'} R$ {Number(t.amount).toLocaleString('pt-BR')}
+                <td className={`px-8 py-5 text-sm font-mono font-bold ${t.type === 'Revenue' ? 'text-green-400' : 'text-red-400'}`}>
+                  {t.type === 'Revenue' ? '+' : '-'} R$ {Number(t.amount).toLocaleString('pt-BR')}
                 </td>
                 <td className="px-8 py-5">
-                  <span className={`px-2 py-0.5 rounded-full text-[9px] font-black uppercase ${t.type === 'Receita' ? 'bg-green-500/10 text-green-500 border border-green-500/20' :
+                  <span className={`px-2 py-0.5 rounded-full text-[9px] font-black uppercase ${t.type === 'Revenue' ? 'bg-green-500/10 text-green-500 border border-green-500/20' :
                     'bg-red-500/10 text-red-500 border border-red-500/20'
                     }`}>
                     {t.type}

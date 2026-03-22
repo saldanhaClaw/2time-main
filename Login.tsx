@@ -211,7 +211,7 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
         onClick={() => window.location.href = '/'}
         className="absolute top-8 left-8 z-[100] flex items-center gap-2 text-gray-500 hover:text-white transition-all text-sm font-bold"
       >
-        <ArrowLeft size={16} /> Voltar ao Site
+        <ArrowLeft size={16} /> Back to Site
       </button>
 
       <section className='flex h-screen items-center justify-center'>

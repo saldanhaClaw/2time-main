@@ -193,7 +193,7 @@ const SDRAssistant = ({ onLeadCapture, phone }: { onLeadCapture: (l: any) => voi
                   <h4 className="font-bold">Request Received!</h4>
                   <p className="text-xs text-gray-400">A specialist will contact you shortly.</p>
                   <a
-                    href={`https://wa.me/${phone.replace(/\D/g, '')}?text=Olá,%20acabei%20de%20solicitar%20um%20orçamento%20pelo%20site.`}
+                    href={`https://wa.me/${phone.replace(/\D/g, '')}?text=Hi,%20I%20just%20requested%20a%20quote%20from%20your%20website.`}
                     className="block py-3 bg-green-600 text-white rounded-xl font-bold text-sm"
                   >
                     Chat Now on WhatsApp
@@ -706,10 +706,10 @@ export default function App() {
                   <p className="text-gray-400 mb-8 leading-relaxed">Leave your details and receive a free technology audit for your business.</p>
                   <div className="space-y-6">
                     <div className="flex items-center gap-4 text-sm font-bold text-gray-300">
-                      <div className="w-8 h-8 rounded-full bg-blue-600/20 flex items-center justify-center text-blue-500"><Send size={16} />Reforçam o CRM</div>
+                      <div className="w-8 h-8 rounded-full bg-blue-600/20 flex items-center justify-center text-blue-500"><Send size={16} />Enhance your CRM</div>
                     </div>
                     <div className="flex items-center gap-4 text-sm font-bold text-gray-300">
-                      <div className="w-8 h-8 rounded-full bg-purple-600/20 flex items-center justify-center text-purple-500"><Sparkles size={16} />IA Generativa</div>
+                      <div className="w-8 h-8 rounded-full bg-purple-600/20 flex items-center justify-center text-purple-500"><Sparkles size={16} />Generative AI</div>
                     </div>
                   </div>
                 </div>

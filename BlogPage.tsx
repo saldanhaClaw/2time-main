@@ -90,7 +90,7 @@ const BlogPage = ({
                     onClick={onBack}
                     className="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-white transition-colors"
                 >
-                    <ChevronLeft size={18} /> Início
+                    <ChevronLeft size={18} /> Home
                 </button>
                 <span className="text-xl font-black uppercase tracking-tighter">
                     2TIME<span className="text-blue-500">BLOG</span>
@@ -107,23 +107,23 @@ const BlogPage = ({
                             Insights em <span className="text-blue-500 italic">Tecnologia.</span>
                         </h1>
                         <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-                            Exploramos as fronteiras da Inteligência Artificial, Engenharia de Software e Escala Digital.
+                            Exploramos as fronteiras da Artificial Intelligence, Engenharia de Software e Escala Digital.
                         </p>
                     </div>
 
                     <div className="space-y-24">
                         {/* SECTION 1: PUBLISHED POSTS */}
-                        {posts.filter(p => p.status === 'Publicado').length > 0 && (
+                        {posts.filter(p => p.status === 'Published').length > 0 && (
                             <div className="space-y-10">
                                 <div className="flex items-center gap-4">
                                     <div className="h-px flex-1 bg-white/5"></div>
                                     <h2 className="text-sm font-black uppercase tracking-widest text-blue-500 flex items-center gap-2">
-                                        <Globe size={14} /> Artigos Publicados
+                                        <Globe size={14} /> Artigos Publisheds
                                     </h2>
                                     <div className="h-px flex-1 bg-white/5"></div>
                                 </div>
                                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                    {posts.filter(p => p.status === 'Publicado').map((post, i) => (
+                                    {posts.filter(p => p.status === 'Published').map((post, i) => (
                                         <motion.div
                                             key={post.id}
                                             initial={{ opacity: 0, y: 20 }}
@@ -149,7 +149,7 @@ const BlogPage = ({
                                                 <div className="p-8 space-y-4 flex-1 flex flex-col">
                                                     <div className="flex items-center justify-between text-[10px] font-black uppercase tracking-widest text-gray-500">
                                                         <span>{new Date(post.date).toLocaleDateString()}</span>
-                                                        <span className="px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">Publicado</span>
+                                                        <span className="px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">Published</span>
                                                     </div>
                                                     <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors line-clamp-2">
                                                         {post.title}
@@ -169,24 +169,24 @@ const BlogPage = ({
                         )}
 
                         {/* SECTION 2: DRAFTS (COMING SOON) */}
-                        {posts.filter(p => !p.status || p.status === 'Rascunho').length > 0 && (
+                        {posts.filter(p => !p.status || p.status === 'Draft').length > 0 && (
                             <div className="space-y-10">
                                 <div className="flex items-center gap-4">
                                     <div className="h-px flex-1 bg-white/5"></div>
                                     <h2 className="text-sm font-black uppercase tracking-widest text-yellow-500 flex items-center gap-2">
-                                        <Tag size={14} /> Em Breve / Em Revisão
+                                        <Tag size={14} /> Coming Soon / Under Review
                                     </h2>
                                     <div className="h-px flex-1 bg-white/5"></div>
                                 </div>
                                 <div className="grid md:grid-cols-3 gap-6">
-                                    {posts.filter(p => !p.status || p.status === 'Rascunho').map((post) => (
+                                    {posts.filter(p => !p.status || p.status === 'Draft').map((post) => (
                                         <div key={post.id} className="glass p-8 rounded-[2rem] border-white/5 bg-gray-950/50 space-y-4 opacity-70 grayscale hover:grayscale-0 transition-all hover:opacity-100 group border-dashed">
                                             <div className="flex items-center justify-between">
                                                 <span className="text-[9px] font-black uppercase tracking-widest text-yellow-500/50">Curadoria Editorial</span>
                                                 <Clock size={16} className="text-gray-700" />
                                             </div>
                                             <h3 className="text-lg font-bold text-gray-400 group-hover:text-white transition-colors capitalize">{post.title.toLowerCase()}</h3>
-                                            <p className="text-[11px] text-gray-600 italic">Conteúdo em fase final de homologação técnica.</p>
+                                            <p className="text-[11px] text-gray-600 italic">Content in final technical review phase.</p>
                                         </div>
                                     ))}
                                 </div>
@@ -194,17 +194,17 @@ const BlogPage = ({
                         )}
 
                         {/* SECTION 3: QUEUE (IDEA STAGE) */}
-                        {queue.filter(q => q.status !== 'Concluído').length > 0 && (
+                        {queue.filter(q => q.status !== 'Completed').length > 0 && (
                             <div className="space-y-10">
                                 <div className="flex items-center gap-4">
                                     <div className="h-px flex-1 bg-white/5"></div>
                                     <h2 className="text-sm font-black uppercase tracking-widest text-purple-500 flex items-center gap-2">
-                                        <Sparkles size={14} /> Fila de Produção de IA
+                                        <Sparkles size={14} /> AI Production Queue
                                     </h2>
                                     <div className="h-px flex-1 bg-white/5"></div>
                                 </div>
                                 <div className="flex flex-wrap gap-4">
-                                    {queue.filter(q => q.status !== 'Concluído').map((item) => (
+                                    {queue.filter(q => q.status !== 'Completed').map((item) => (
                                         <div key={item.id} className="px-5 py-3 bg-white/5 border border-white/5 rounded-full flex items-center gap-3 group hover:bg-white/10 transition-all">
                                             <div className={`w-1.5 h-1.5 rounded-full ${item.status === 'Processando' ? 'bg-blue-500 animate-pulse' : 'bg-gray-700'}`}></div>
                                             <span className="text-xs font-bold text-gray-500 group-hover:text-purple-400 transition-colors">{item.keyword}</span>
@@ -216,7 +216,7 @@ const BlogPage = ({
 
                         {posts.length === 0 && queue.length === 0 && (
                             <div className="text-center py-24 glass rounded-[3rem] border-white/5">
-                                <p className="text-gray-500 font-bold italic">Nenhum insight disponível no momento. Volte em breve!</p>
+                                <p className="text-gray-500 font-bold italic">No insights available at the moment. Check back soon!</p>
                             </div>
                         )}
                     </div>

@@ -20,10 +20,10 @@ interface PortfolioPageProps {
 }
 
 const categories = [
-    'Todos',
+    'All',
     'Assessorias',
     'Sistemas',
-    'Automações',
+    'Automations',
     'Sites',
     'SEO'
 ];
@@ -31,17 +31,17 @@ const categories = [
 const categoryIcons: Record<string, React.ReactNode> = {
     'Assessorias': <Cpu size={16} />,
     'Sistemas': <Code2 size={16} />,
-    'Automações': <Cpu size={16} />,
+    'Automations': <Cpu size={16} />,
     'Sites': <Globe size={16} />,
     'SEO': <TrendingUp size={16} />
 };
 
 const PortfolioPage: React.FC<PortfolioPageProps> = ({ portfolio, onBack }) => {
-    const [selectedCategory, setSelectedCategory] = useState('Todos');
+    const [selectedCategory, setSelectedCategory] = useState('All');
     const [searchQuery, setSearchQuery] = useState('');
 
     const filteredPortfolio = portfolio.filter(item => {
-        const matchesCategory = selectedCategory === 'Todos' || item.category === selectedCategory;
+        const matchesCategory = selectedCategory === 'All' || item.category === selectedCategory;
         const matchesSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
             item.description.toLowerCase().includes(searchQuery.toLowerCase());
         return matchesCategory && matchesSearch;
@@ -57,7 +57,7 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ portfolio, onBack }) => {
                         className="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-white transition-colors group"
                     >
                         <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
-                        Voltar ao Início
+                        Voltar ao Home
                     </button>
 
                     <div className="flex items-center gap-4">
@@ -83,7 +83,7 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ portfolio, onBack }) => {
                             Nossos Cases
                         </div>
                         <h1 className="text-4xl md:text-6xl font-black text-white leading-tight">
-                            Portfólio de <br />
+                            Portfolio de <br />
                             <span className="gradient-text italic">Engenharia Digital.</span>
                         </h1>
                         <p className="text-gray-400 text-lg max-w-2xl leading-relaxed">
@@ -183,7 +183,7 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ portfolio, onBack }) => {
                                 <p className="text-gray-500">Tente ajustar seus filtros ou busca.</p>
                             </div>
                             <button
-                                onClick={() => { setSelectedCategory('Todos'); setSearchQuery(''); }}
+                                onClick={() => { setSelectedCategory('All'); setSearchQuery(''); }}
                                 className="text-blue-500 font-bold hover:underline"
                             >
                                 Limpar todos os filtros
