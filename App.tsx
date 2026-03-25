@@ -57,23 +57,28 @@ import { Portfolio3DCarousel } from "./components/ui/portfolio-3d-carousel";
 const TESTIMONIALS = [
   {
     id: 1,
-    testimonial: "2TimeWeb transformed our sales process. The AI SDR is like having a top-tier employee available 24/7.",
-    author: "Ricardo S. - CEO @ AutoTech"
+    testimonial: "2TimeWeb transformou nosso processo de vendas. O AI SDR é como ter um funcionário de elite disponível 24/7, reduzindo o custo de aquisição.",
+    author: "AutoTech Locações"
   },
   {
     id: 2,
-    testimonial: "The integrated SEO system generated more organic leads in 3 months than our entire paid strategy from last year.",
-    author: "Maria V. - Head of Growth @ LogiFlow"
+    testimonial: "A plataforma que criaram revolucionou nossos agendamentos. Dobramos a conversão vendendo os mesmos serviços, mas com uma estrutura hiper-premium.",
+    author: "Clínica Nova Estética"
   },
   {
     id: 3,
-    testimonial: "Real scalability. We doubled our operation without hiring anyone extra for admin, thanks to the automations.",
-    author: "Carlos R. - Founder @ BuildFast"
+    testimonial: "Escalabilidade real. Pude dobrar minha agenda clínica sem precisar contratar mais pessoas no administrativo graças às automações.",
+    author: "Dra Aline Fonseca"
+  },
+  {
+    id: 4,
+    testimonial: "O ecossistema construído alavancou nossos ganhos e a automação do funil de vendas nos permitiu focar no que realmente importa.",
+    author: "Mounjaro Help"
   }
 ];
 
 const ShuffleCards = () => {
-  const [positions, setPositions] = useState<string[]>(["front", "middle", "back"]);
+  const [positions, setPositions] = useState<string[]>(["front", "middle", "back", "back"]);
 
   const handleShuffle = () => {
     const newPositions = [...positions];

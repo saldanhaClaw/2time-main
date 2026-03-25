@@ -61,27 +61,66 @@ export const SERVICES: Service[] = [
 
 export const PORTFOLIO: PortfolioItem[] = [
   {
-    // Fix: Changed id from number to string to comply with PortfolioItem interface
     id: '1',
-    title: 'Logistics Management System',
-    category: 'Custom Systems',
-    description: 'Complete fleet automation and real-time tracking.',
-    image: 'https://picsum.photos/seed/logistics/800/600'
+    title: 'Site W-tech Brasil',
+    category: 'SITES',
+    description: 'Sistema de Site Integrado com cursos e agendas',
+    image: '/wtech.png' // Replace with proper image URLs when available
   },
   {
-    // Fix: Changed id from number to string to comply with PortfolioItem interface
     id: '2',
-    title: 'SaaS Sales Dashboard',
-    category: 'Automação',
-    description: 'Multiple payment gateway integration and advanced metrics.',
-    image: 'https://picsum.photos/seed/dashboard/800/600'
+    title: 'Automação Kiwify e Vendas',
+    category: 'AUTOMAÇÕES',
+    description: 'Integração Kiwify para aceleração de conversão',
+    image: '/kiwify.png'
   },
   {
-    // Fix: Changed id from number to string to comply with PortfolioItem interface
     id: '3',
-    title: 'B2B Content Portal',
-    category: 'SEO & Growth',
-    description: 'Architecture focused on qualified lead capture via organic traffic.',
-    image: 'https://picsum.photos/seed/content/800/600'
+    title: 'Sistema Imobiliária',
+    category: 'SISTEMAS',
+    description: 'Automação completa para gestão de imóveis',
+    image: '/imob.png'
+  },
+  {
+    id: '4',
+    title: 'Escola de Leilões',
+    category: 'SITES',
+    description: 'Lançamento de Cursos online e Presencial',
+    image: '/leiloes.png'
+  },
+  {
+    id: '5',
+    title: 'Blog SEO Grupo Trido',
+    category: 'SEO',
+    description: 'Publicações com Redatora profissional',
+    image: '/trido.png'
+  },
+  {
+    id: '6',
+    title: 'Controle Hospedagem',
+    category: 'SISTEMAS',
+    description: 'Dashboard de gestão para hotelaria',
+    image: '/resort.png'
+  },
+  {
+    id: '7',
+    title: 'Nacional Hidro',
+    category: 'SITES',
+    description: 'Hidrojateamento de Alta Pressão',
+    image: '/hidro.png'
+  },
+  {
+    id: '8',
+    title: 'Resort das Oliveiras',
+    category: 'SISTEMAS',
+    description: 'Gestão Inteligente',
+    image: '/oliveiras.png'
+  },
+  {
+    id: '9',
+    title: 'Loja Wtech Store',
+    category: 'SITES',
+    description: 'E-commerce de altíssima conversão',
+    image: '/wtechstore.png'
   }
 ];
