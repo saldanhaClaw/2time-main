@@ -94,34 +94,35 @@ O SEO B2B é o ativo digital que gera leads qualificados enquanto você dorme.',
   await sql`
     INSERT INTO portfolio_items (id, title, category, description, image, link)
     VALUES 
-    ('port01', 'Site W-tech Brasil', 'SITES', 'Sistema de Site Integrado com cursos e agendas', 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800', 'https://w-techbrasil.com.br/'),
-    ('port02', 'Blog SEO Grupo Trido', 'SEO', 'Publicações com Redatora profissional', 'https://images.unsplash.com/photo-1432821596592-e2c18b78144f?q=80&w=800', 'https://blog.grupotrido.com/'),
-    ('port03', 'E-Lance', 'SITES', 'Site Integrado com Automações e Sistema', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800', 'https://www.e-lance.com.br/'),
-    ('port04', 'Portal do Franqueado E-Lance', 'SISTEMAS', 'Sistema para o Franqueado E-Lance', 'https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=800', 'https://www.e-lance.com.br/'),
-    ('port05', 'Escola de Leilões', 'SITES', 'Lançamento de Cursos online e Presencial Leilões', 'https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800', 'https://escoladeleiloes.com.br/'),
-    ('port06', 'Sistema Imobiliária automação', 'SISTEMAS', 'Automação completa para gestão imobiliária', 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=800', 'https://imobsite.2b.app.br/'),
-    ('port07', 'Site portal Imobiliária', 'SITES', 'Portal completo para busca de imóveis', 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=800', 'https://imobsite.2b.app.br/'),
+    ('port01', 'Site W-tech Brasil', 'SITES', 'Sistema de Site Integrado com cursos e agendas', 'https://image.thum.io/get/width/800/https://w-techbrasil.com.br/', 'https://w-techbrasil.com.br/'),
+    ('port02', 'Blog SEO Grupo Trido', 'SEO', 'Publicações com Redatora profissional', 'https://image.thum.io/get/width/800/https://blog.grupotrido.com/', 'https://blog.grupotrido.com/'),
+    ('port03', 'E-Lance', 'SITES', 'Site Integrado com Automações e Sistema', 'https://image.thum.io/get/width/800/https://www.e-lance.com.br/', 'https://www.e-lance.com.br/'),
+    ('port04', 'Portal do Franqueado E-Lance', 'SISTEMAS', 'Sistema para o Franqueado E-Lance', 'https://image.thum.io/get/width/800/https://www.e-lance.com.br/', 'https://www.e-lance.com.br/'),
+    ('port05', 'Escola de Leilões', 'SITES', 'Lançamento de Cursos online e Presencial Leilões', 'https://image.thum.io/get/width/800/https://escoladeleiloes.com.br/', 'https://escoladeleiloes.com.br/'),
+    ('port06', 'Sistema Imobiliária automação', 'SISTEMAS', 'Automação completa para gestão imobiliária', 'https://image.thum.io/get/width/800/https://imobsite.2b.app.br/', 'https://imobsite.2b.app.br/'),
+    ('port07', 'Site portal Imobiliária', 'SITES', 'Portal completo para busca de imóveis', 'https://image.thum.io/get/width/800/https://imobsite.2b.app.br/', 'https://imobsite.2b.app.br/'),
     ('port08', 'Automação Kiwify e Sistemas de Vendas', 'AUTOMAÇÕES', 'Integração avançada Kiwify para aceleração de vendas', 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800', '#'),
-    ('port09', 'Automação Pro-Riders', 'AUTOMAÇÕES', 'Sistema automatizado para gestão de vendas', 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?q=80&w=800', 'https://proriders.com.br/'),
-    ('port10', 'Pecon Atendente', 'AUTOMAÇÕES', 'Automação de atendimento inteligente', 'https://images.unsplash.com/photo-1531746790095-e5e9c545b6ef?q=80&w=800', 'https://peconvet.com.br/'),
-    ('port11', 'Nacional Hidro', 'SITES', 'Hidrojateamento de Alta Pressão e Saneamento 24h', 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800', 'https://nacionalhidro.com.br/'),
-    ('port12', 'Noelle Garcia - Advogada', 'SITES', 'Especializada em Direito Criminal, Família e Civil', 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=800', 'https://noellegarcia.com.br/'),
+    ('port09', 'Automação Pro-Riders', 'AUTOMAÇÕES', 'Sistema automatizado para gestão de vendas', 'https://image.thum.io/get/width/800/https://proriders.com.br/', 'https://proriders.com.br/'),
+    ('port10', 'Pecon Atendente', 'AUTOMAÇÕES', 'Automação de atendimento inteligente', 'https://image.thum.io/get/width/800/https://peconvet.com.br/', 'https://peconvet.com.br/'),
+    ('port11', 'Nacional Hidro', 'SITES', 'Hidrojateamento de Alta Pressão e Saneamento 24h', 'https://image.thum.io/get/width/800/https://nacionalhidro.com.br/', 'https://nacionalhidro.com.br/'),
+    ('port12', 'Noelle Garcia - Advogada', 'SITES', 'Especializada em Direito Criminal, Família e Civil', 'https://image.thum.io/get/width/800/https://noellegarcia.com.br/', 'https://noellegarcia.com.br/'),
     ('port13', 'Controle Hospedagem - Resort', 'SISTEMAS', 'Dashboard de gestão completo para hotelaria', 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800', '#'),
-    ('port14', 'Portal B-Tech - Escola', 'SISTEMAS', 'Portal educacional completo', 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=800', 'https://b-tech.app.br/'),
-    ('port15', 'Site B-Tech', 'SITES', 'Site institucional premium', 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=800', 'https://b-tech.app.br/'),
+    ('port14', 'Portal B-Tech - Escola', 'SISTEMAS', 'Portal educacional completo', 'https://image.thum.io/get/width/800/https://b-tech.app.br/', 'https://b-tech.app.br/'),
+    ('port15', 'Site B-Tech', 'SITES', 'Site institucional premium', 'https://image.thum.io/get/width/800/https://b-tech.app.br/', 'https://b-tech.app.br/'),
     ('port16', 'Resort das Oliverias - Pablo Marçal', 'SISTEMAS', 'Gestão inteligente de resort', 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=800', '#'),
     ('port17', 'Sistema de Gestão', 'SISTEMAS', 'Estoque Inteligente em Tempo Real', 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800', '#'),
-    ('port18', 'Grupo Trido', 'SITES', 'Site institucional completo', 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800', 'https://grupotrido.com/'),
-    ('port19', 'Portal Gestão W-Tech', 'SISTEMAS', 'Portal de gestão empresarial', 'https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=800', 'https://portal.w-techbrasil.com.br/'),
-    ('port20', 'Loja Online', 'SITES', 'E-commerce de alta conversão', 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800', 'https://w-techstore.com.br/'),
-    ('port21', 'Vendas Lançamento Online ProRiders', 'SITES', 'Página de vendas para lançamento', 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?q=80&w=800', 'https://proriders.com.br/'),
-    ('port22', 'Site Wtech Novo', 'SITES', 'nova versão do site institucional', 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=800', 'https://site.w-techbrasil.com.br/'),
-    ('port23', 'Loja online Wtech Store', 'SITES', 'E-commerce de peças e acessórios', 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=800', 'https://w-techstore.com.br/')
+    ('port18', 'Grupo Trido', 'SITES', 'Site institucional completo', 'https://image.thum.io/get/width/800/https://grupotrido.com/', 'https://grupotrido.com/'),
+    ('port19', 'Portal Gestão W-Tech', 'SISTEMAS', 'Portal de gestão empresarial', 'https://image.thum.io/get/width/800/https://portal.w-techbrasil.com.br/', 'https://portal.w-techbrasil.com.br/'),
+    ('port20', 'Loja Online', 'SITES', 'E-commerce de alta conversão', 'https://image.thum.io/get/width/800/https://w-techstore.com.br/', 'https://w-techstore.com.br/'),
+    ('port21', 'Vendas Lançamento Online ProRiders', 'SITES', 'Página de vendas para lançamento', 'https://image.thum.io/get/width/800/https://proriders.com.br/', 'https://proriders.com.br/'),
+    ('port22', 'Site Wtech Novo', 'SITES', 'nova versão do site institucional', 'https://image.thum.io/get/width/800/https://site.w-techbrasil.com.br/', 'https://site.w-techbrasil.com.br/'),
+    ('port23', 'Loja online Wtech Store', 'SITES', 'E-commerce de peças e acessórios', 'https://image.thum.io/get/width/800/https://w-techstore.com.br/', 'https://w-techstore.com.br/')
     ON CONFLICT (id) DO UPDATE SET 
       title = EXCLUDED.title, 
       category = EXCLUDED.category,
       description = EXCLUDED.description,
-      image = EXCLUDED.image;
+      image = EXCLUDED.image,
+      link = EXCLUDED.link;
   `;
   console.log('✅ Portfolio seeded with 23 real projects!');
 
