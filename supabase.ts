@@ -6,14 +6,16 @@ const DATABASE_URL = 'postgresql://neondb_owner:npg_6CuNlkeVUrD9@ep-cool-morning
 const sql = neon(DATABASE_URL);
 
 // Helper: run a query and return rows array
+// IMPORTANT: Use sql.query() for raw SQL strings, NOT tagged template literals.
+// Tagged templates (sql`...`) treat interpolated values as parameters, not SQL.
 async function runQuery(query: string, params: any[] = []): Promise<any[]> {
-  if (params.length === 0) {
-    const result = await sql`${query}`;
-    return Array.isArray(result) ? result : [];
+  try {
+    const result: any = await (sql as any).query(query, params);
+    return result?.rows ?? result ?? [];
+  } catch (e: any) {
+    console.error('[Neon runQuery] Error:', e.message, '| Query:', query.substring(0, 100));
+    return [];
   }
-  // Use query() for parameterized queries — returns { rows }
-  const result: any = await (sql as any).query(query, params);
-  return result?.rows ?? result ?? [];
 }
 
 // --- Admin credentials ---

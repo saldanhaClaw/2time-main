@@ -65,62 +65,62 @@ export const PORTFOLIO: PortfolioItem[] = [
     title: 'Site W-tech Brasil',
     category: 'SITES',
     description: 'Sistema de Site Integrado com cursos e agendas',
-    image: '/wtech.png' // Replace with proper image URLs when available
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800'
   },
   {
     id: '2',
     title: 'Automação Kiwify e Vendas',
     category: 'AUTOMAÇÕES',
     description: 'Integração Kiwify para aceleração de conversão',
-    image: '/kiwify.png'
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800'
   },
   {
     id: '3',
     title: 'Sistema Imobiliária',
     category: 'SISTEMAS',
     description: 'Automação completa para gestão de imóveis',
-    image: '/imob.png'
+    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=800'
   },
   {
     id: '4',
     title: 'Escola de Leilões',
     category: 'SITES',
     description: 'Lançamento de Cursos online e Presencial',
-    image: '/leiloes.png'
+    image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800'
   },
   {
     id: '5',
     title: 'Blog SEO Grupo Trido',
     category: 'SEO',
     description: 'Publicações com Redatora profissional',
-    image: '/trido.png'
+    image: 'https://images.unsplash.com/photo-1432821596592-e2c18b78144f?q=80&w=800'
   },
   {
     id: '6',
     title: 'Controle Hospedagem',
     category: 'SISTEMAS',
     description: 'Dashboard de gestão para hotelaria',
-    image: '/resort.png'
+    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800'
   },
   {
     id: '7',
     title: 'Nacional Hidro',
     category: 'SITES',
     description: 'Hidrojateamento de Alta Pressão',
-    image: '/hidro.png'
+    image: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=800'
   },
   {
     id: '8',
     title: 'Resort das Oliveiras',
     category: 'SISTEMAS',
     description: 'Gestão Inteligente',
-    image: '/oliveiras.png'
+    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800'
   },
   {
     id: '9',
     title: 'Loja Wtech Store',
     category: 'SITES',
     description: 'E-commerce de altíssima conversão',
-    image: '/wtechstore.png'
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800'
   }
 ];
